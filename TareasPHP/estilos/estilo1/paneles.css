@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* CSS Document */
+
+	.panel
+	{
+		color: white;
+		border: 1px solid gray;
+		border-radius: 10px;
+		margin: 10px;
+		display:table;
+		padding: 30px;
+		padding-top: 10px;		
+		background-color: rgba(0, 0, 0, 0.75);
+	    position:absolute;
+	    left: 50%;
+
+	}
+
+	.panelLogin
+	{	    
+		
+		text-align: center;
+		top:50%;
+		margin-top: -100px;
+	    margin-left: -100px;
+	    
+	}
+
+	.panelRegistro
+	{	    
+		
+		text-align: center;
+		top:50%;
+		margin-top: -100px;
+	    margin-left: -100px;
+	    
+	}	
+	.panelLogin label, .panelRegistro label
+	{
+		margin-bottom:  10px;
+		display: inline-block;
+		width: 100px;
+		text-align: right;
+		margin-right: 10px;
+		color: #fff;
+	}
+	
+	.panel a
+	{
+		/*text-decoration: none;*/
+		color: white;
+	}
+	
+	.panel div
+	{
+		 float: left;
+	}
+	.panel .boton
+	{
+		margin-top:  10px;
+		display: block;
+		color: white;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px ;
+		text-decoration: none;
+		background-color: #51a351;
+		
+	}
+	
+	.error{
+		/*border: 1px solid gray;*/
+		border-radius: 6px;
+		margin: 10px;
+		/*display:table;*/
+		width: 100%;
+		padding: 5px;
+		background-color: #ff4444;
+		color: black;
+	    /*position:absolute;*/
+	    /*left: 50%;*/
+	    /*margin-left: -100px;	*/
+	}
+	
+	.columna
+	{
+		float:left;
+	}

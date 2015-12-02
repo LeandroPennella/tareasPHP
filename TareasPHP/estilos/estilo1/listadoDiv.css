@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+
+.TablaUsuarios{
+	
+	border-radius: 10px;
+	display:table;
+	padding: 5px;
+	border-color: #cccccc;
+	border-spacing:1px;
+	border-collapse: collapse;
+	
+}
+
+.Usuario{
+	display:table-row;
+	background: gray;
+	padding: 5px;
+	border: 10px solid #cccccc;
+	
+	background-color: #EEEEEE;
+	
+}
+
+.Usuario div{
+	 display: table-cell;
+	 vertical-align: middle;
+	 width: 100px;
+}

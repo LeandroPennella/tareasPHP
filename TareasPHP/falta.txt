@@ -1,0 +1,42 @@
+errores
+que solo cada usuario pueda modificarse de
+validar mails duplicados
+
+
+
+
+completa  usuario y contrasena en registro (?)
+
+
+
+
+escapar en logeo
+encriptar contraseña
+Listado > Panel
+opcion panel usuario
+cargar foto al final junto con el resto > cargarla en un temporal y moverla al submitear el registro
+imagen invalida rompe form
+devolucion errores forms
+
+
+mejoras
+manejar mails repetidos
+menu en usuario
+-> modificar
+-> Logout
+
+
+impedir acceso  a imagenes htdocs
+http://ckeditor.com/
+
+
+DISEÑO
+poner ul - li login y registro
+notificaciones - tiempo (como foursquare, )
+
+otra foto
+mas blur menos contraste
+usuario    |             |
+contraseña |             |
+registrarse -> sin boton
+
