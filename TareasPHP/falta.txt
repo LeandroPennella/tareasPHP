@@ -39,4 +39,11 @@ mas blur menos contraste
 usuario    |             |
 contraseña |             |
 registrarse -> sin boton
+==============================================
+Starting ~line 200 of your http.conf file, copy everything between <Directory "C:/xampp/htdocs"> and </Directory> (~line 232) 
+and paste it immediately below with C:/xampp/htdocs replaced with your desired directory (in this case C:/Projects) 
+to give your server the correct permissions for the new directory.
 
+Find the <IfModule alias_module></IfModule> section (~line 300) and add
+
+Alias /transitCalculator "C:/Projects/transitCalculator/trunk"

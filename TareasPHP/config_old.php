@@ -1,11 +1,14 @@
 <?php
-define("URL_LOGIN","login.php");
-define("DIR_LIBRERIAS","scripts/");
-define("DIR_FOTOPERFIL","../upload/");
+
 define("SQL_URL","mysql16.000webhost.com");
 define("SQL_US","a6408196_parcial");
 define("SQL_PW","parcial0");
 define("SQL_DBPARCIAL","a6408196_parcial");
+
+define("URL_LOGIN","login.php");
+define("DIR_LIBRERIAS","scripts/");
+define("DIR_FOTOPERFIL","../upload/");
+
 setlocale(LC_TIME, 'spanish');  
 require_once "inc/inc.header.php";
 //require_once "scripts/Listado.php";

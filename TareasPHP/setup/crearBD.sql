@@ -1,15 +1,16 @@
-<?php
+CREATE SCHEMA IF NOT EXISTS `tareas`;
+
+USE `tareas`;
 
 
-$SQLEliminarTablasBD="SELECT CONCAT(  `drop table `, table_name,  `; ` ) 
-FROM information_schema.tables
-WHERE table_schema =  `tareas`
-";
+
+-- ==============================================================================
+-- ==
+-- == Tablas
+-- ==
+-- ==============================================================================
 
 
-//$SQLCrearBD="CREATE database tareas";
-  
-$SQLCrearTablasBD="
 -- Create Table: Lugares
 -- ------------------------------------------------------------------------------
 CREATE TABLE Lugares
@@ -168,6 +169,8 @@ CREATE TABLE Usuarios
 	,`Usuario` VARCHAR(250)  NULL 
 	,`foto` VARCHAR(250)  NULL 
 	,`nombre` VARCHAR(250)  NULL 
+	,`apellido` VARCHAR(250)  NULL
+	,`fechaNacimiento` DATE  NULL
 	,`mail` VARCHAR(250)  NULL 
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -365,15 +368,6 @@ ALTER TABLE Contrasenias ADD FOREIGN KEY (usuario_id) REFERENCES Usuarios(id);
 ALTER TABLE Tarea_Etiqueta ADD FOREIGN KEY (Etiqueta_id) REFERENCES Etiquetas(id);
 
 
-";
-
-$SQLInsertarDatos="
-
 INSERT INTO roles (rol) VALUES ('Administrador');
 INSERT INTO usuarios (usuario) VALUES ('Leandro');
 INSERT INTO contrasenias (contrasenia,usuario_id) VALUES ('Leandro',1);
-";
-
-
-
-?>

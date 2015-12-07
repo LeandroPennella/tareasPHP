@@ -14,9 +14,16 @@ if($clasePanel==""){$clasePanel="panelLogin";}
 ?>
 <div class="<?php echo $clasePanel;?>">
 	<h2>Ingreso</h2>
-	<?php if($_SESSION["loginError"]=="true"){?>
-	<div class=<?php echo $claseError;?>>Usuario y contraseña no coiniden</div>
-	<?php $_SESSION["loginError"]="false";}?>
+	<?php  
+		if(isset($_SESSION["loginError"]))
+		{
+			if ($_SESSION["loginError"]=="true")
+			{?>
+			<div class=<?php  echo $claseError;?>>Usuario y contraseña no coiniden</div>
+			<?php  $_SESSION["loginError"]="false";
+			}
+		}
+	?>
 	
 	<form  action="../index.php?accionLogin=validar" method="post" id="loginForm">
 		<label for="usuario">Usuario</label>

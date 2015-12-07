@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "config.php";
-require "librerias/funcionesLogin.php";
+require "scripts/funcionesLogin.php";
 ?>
 <html>
 <head>

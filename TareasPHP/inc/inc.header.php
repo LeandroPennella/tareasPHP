@@ -1,5 +1,9 @@
 <?php 
-session_start();
+if(!isset($_SESSION))
+{
+	session_start();
+}
+
 function mostrarHeader($tituloPagina)
 {?>
 <header>
@@ -13,4 +17,5 @@ function mostrarHeader($tituloPagina)
 	</div>
 </header>
 
-<?php } ?>https://raw.githubusercontent.https://raw.githubusercontent.com/wakatime/eclipse-wakatime/master/update-sitehttps://raw.githubusercontent.com/wakatime/eclipse-wakatime/master/update-sitecom/wakatime/eclipse-wakatime/master/update-site
+<?php } ?>
+<!-- https://raw.githubusercontent.https://raw.githubusercontent.com/wakatime/eclipse-wakatime/master/update-sitehttps://raw.githubusercontent.com/wakatime/eclipse-wakatime/master/update-sitecom/wakatime/eclipse-wakatime/master/update-site -->
