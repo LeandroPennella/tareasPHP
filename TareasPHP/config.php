@@ -2,8 +2,8 @@
 
 
 define("SQL_HOST","127.0.0.1");
-define("SQL_US","root");
-define("SQL_PW","");
+define("SQL_US","usuarioBD");
+define("SQL_PW","passwordBD");
 define("SQL_DB","tareas");
 
 define("URL_LOGIN","login.php");

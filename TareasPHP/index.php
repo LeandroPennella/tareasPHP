@@ -1,7 +1,9 @@
 <?php
 if(!file_exists (  "config.php" ))
 {
-	echo("no existe");
+	//echo("no existe");
+	header("Location: setup/indexInstalacion.php");
+	die();
 } 
 else 
 {// existe
