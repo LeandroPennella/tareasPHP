@@ -4,8 +4,8 @@
 
 <html>
 	<head>
-			<link type="text/css" rel="stylesheet" href="../estilos/<?php echo $_SESSION['ESTILO_SITIO']; ?>/sitio.css">
-			<link type="text/css" rel="stylesheet" href="../estilos/<?php echo $_SESSION['ESTILO_SITIO']; ?>/listado.css">
+			<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/sitio.css">
+			<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/listado.css">
 	</head>
 		<body>
 			
@@ -45,7 +45,7 @@
 	    } 
 	    echo "</tr></tbody></table>";
     }
-	$db->close;
+	mysqli_close($db);
 //}
 ?>		
 </body>
