@@ -10,7 +10,7 @@ define("DIR_LIBRERIAS","scripts/");
 define("DIR_FOTOPERFIL","../upload/");
 
 setlocale(LC_TIME, 'spanish');  
-require_once "inc/inc.header.php";
+require_once "scripts/header.php";
 //require_once "scripts/Listado.php";
 require_once DIR_LIBRERIAS."sql.php";
 require_once "scripts/funcionesLogin.php";

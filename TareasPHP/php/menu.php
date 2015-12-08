@@ -3,7 +3,6 @@ require_once "../config.php";
 
 comprobarAcceso();
 
-
 ?>
 <html>
 <head>

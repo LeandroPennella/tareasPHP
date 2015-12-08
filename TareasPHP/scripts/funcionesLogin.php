@@ -3,6 +3,8 @@
 
 function validarLogin()
 {	
+	
+	
 	$mysqli = new mysqli(SQL_HOST,SQL_US,SQL_PW,SQL_DB);
 	if (mysqli_connect_error()) {die('Error de Conexión (' . mysqli_connect_errno() . ') '. mysqli_connect_error());}
 	
@@ -31,6 +33,8 @@ function validarLogin()
 	where u.usuario=$usuario and c.contrasenia=$clave";
 
 	
+	
+	
 	if (sql_contarRegistros($mysqli, $sql)==1)
 	{
 		$_SESSION["login"]="true";
@@ -45,32 +49,15 @@ function validarLogin()
 		//$_SESSION["login"]["Error"]="true";
 		//$_SESSION['login']['msg'] = 'Logueo incorrecto';
 	}			
-	header('Location: index.php');
+	header('Location: login.php');
+	
 	$mysqli->close();
     unset($sql); 
+    
 }
 
 
 
-function logOut($redireccion)
-{
-	session_destroy();
-	if (isset($redireccion)){header('Location: '.$redireccion);}
-}
 
-
-function estaLogueado()
-{
-	return $_SESSION["login"]=="true";
-};
-
-
-function comprobarAcceso()
-{
-	if (!estaLogueado())
-	{
-		header('Location: ../index.php');
-	}
-}
 
 ?>

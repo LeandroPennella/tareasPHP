@@ -41,7 +41,8 @@
 					        echo "</tr>";
 					    } 
 				    }
-					$db->close;
+					//$db->close;
+				    mysqli_close($db);
 					?>
 				    </tr></tbody></table>
 				</td>
