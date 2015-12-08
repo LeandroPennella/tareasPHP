@@ -2,9 +2,9 @@
 
 session_start();
 	
-require_once "../scripts/registroProcesarImagen.php";
-require_once "../scripts/registroFunciones.php";
-require_once "../scripts/registroValidar.php";
+require_once "registroProcesarImagen.php";
+require_once "registroFunciones.php";
+require_once "registroValidar.php";
 $claseError="error";
 //function imprimirFormulario($tiposDocumento,$carreras)
 //{

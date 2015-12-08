@@ -1,4 +1,5 @@
 <?php
+
 function sql_contarRegistros($mysqli, $sql)
 {
 	if ($result = mysqli_query($mysqli, $sql))

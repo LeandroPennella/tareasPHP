@@ -1,4 +1,4 @@
-<?php include '../inc/inc.registro.php'; ?>
+<?php include '../scripts/inc.registro.php'; ?>
 
 <html>
 <head>

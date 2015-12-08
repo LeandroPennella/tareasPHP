@@ -1,26 +1,34 @@
 <?php 
-//session_start();
-require_once '../config.php';
-require_once '../scripts/funcionesLogin.php';
 
+require_once '../config.php';
+//require_once '../scripts/funcionesLogin.php';
 
 if (!isset($_SESSION["login"])||($_SESSION["login"]!="true"))//no esta logueado
 {
+	
+
+/*
 	if (isset($_GET["accionLogin"])&&($_GET["accionLogin"]=="validar"))
 	{
+		
 		validarLogin();
 	}
+
+
 	else
 	{
+	*/
 		//header('Location: php/login.php');
 		?>
 		<html>
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-			<link type="text/css" rel="stylesheet" href="../estilos/<?php echo $_SESSION['ESTILO_SITIO']; ?>/sitio.css">
+			<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/sitio.css">
 		</head>
 		<body>
+		
 			<?php
+
 			$clasePanel="panel panelLogin";
 			$claseError="error";
 			$direccionRegistro="registro.php";
@@ -39,23 +47,24 @@ if (!isset($_SESSION["login"])||($_SESSION["login"]!="true"))//no esta logueado
 					}
 				?>
 				
-				<form  action="login.php?accionLogin=validar" method="post" id="loginForm">
+				<form  action="../scripts/loginProcesa.php" method="post" id="loginForm">
 					<label for="usuario">Usuario</label>
 					<input type="text" name="usuario" /><br/>
 					<label for="contrasena">Contraseña</label>
 					<input type="password" name="contrasena" /><br/>
-					<a class="boton" href="javascript:{}" onclick="document.getElementById('loginForm').submit();">Ingresar</a>
+					
+					<a class="boton" href="javascript:{}" onclick="document.getElementById('loginForm').submit();">Ingresar</a> 
 				</form>
 				
-				<?php
-				if($direccionRegistro!=""){?>
+
 				<a  href="<?php echo $direccionRegistro?>">Registrarse</a>
-				<?php }?>
+
 			</div>
 		</body>
 		</html>		
 		<?php 
-	}
+		
+	//}
 }
 else // esta logueado
 {

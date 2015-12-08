@@ -1,9 +1,10 @@
 <?php
 
+require_once "sql.php";
 
 function validarLogin()
 {	
-	
+
 	
 	$mysqli = new mysqli(SQL_HOST,SQL_US,SQL_PW,SQL_DB);
 	if (mysqli_connect_error()) {die('Error de Conexión (' . mysqli_connect_errno() . ') '. mysqli_connect_error());}
@@ -33,7 +34,14 @@ function validarLogin()
 	where u.usuario=$usuario and c.contrasenia=$clave";
 
 	
+	//echo (sql_contarRegistros($mysqli, $sql));
 	
+	//echo "accion: ".$_GET["accionLogin"];
+	//echo "<br/>";
+	//echo "accion: ".$_GET["accionLogin"];
+	//echo "<br/>";
+	//echo "accion: ".$_GET["accionLogin"];
+	//echo "<br/>";
 	
 	if (sql_contarRegistros($mysqli, $sql)==1)
 	{
@@ -49,7 +57,26 @@ function validarLogin()
 		//$_SESSION["login"]["Error"]="true";
 		//$_SESSION['login']['msg'] = 'Logueo incorrecto';
 	}			
-	header('Location: login.php');
+	
+	echo "<hr/>";
+	echo "--validarLogin----------------------";
+	echo "<br/>";
+	echo "login: ".$_SESSION["login"];
+	echo "<br/>";
+	echo "loginError: ".$_SESSION["loginError"];
+	echo "<br/>";
+	echo "usuario: ".$_SESSION["usuario"];
+	echo "<br/>";
+	echo "<hr/>";
+	?><a href="login.php">ir</a><?php 
+	
+	//header('Location: login.php');
+	
+	//echo "<br/>";
+	//echo "accion: ".$_GET["accionLogin"];
+	//echo "<br/>";
+	//echo "accion: ".$_GET["accionLogin"];
+	//echo "<br/>";
 	
 	$mysqli->close();
     unset($sql); 

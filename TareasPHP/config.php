@@ -13,7 +13,7 @@ define("DIR_FOTOPERFIL","../upload/");
 define("NOMBRE_SITIO","tareas");
 define("ESTILO_SITIO","estilo1");
 
-$_SESSION['ESTILO_SITIO']=ESTILO_SITIO;
+//$_SESSION['ESTILO_SITIO']=ESTILO_SITIO;
 
 setlocale(LC_TIME, 'spanish');  
 
@@ -22,9 +22,10 @@ if(!isset($_SESSION)) {
 }
 
 require_once DIR_LIBRERIAS."header.php";
+
 require_once DIR_LIBRERIAS."sql.php";
+
 require_once DIR_LIBRERIAS."funcionesAutenticacion.php";
-require_once DIR_LIBRERIAS."header.php";
 
 //require_once "http://".$_SERVER['SERVER_NAME'].DIR_LOGIN.URL_LOGIN;
 //$raiz=dirname($_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF']);

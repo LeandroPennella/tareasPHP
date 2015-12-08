@@ -1,12 +1,10 @@
 <?php
-require_once "../config.php";
-
-comprobarAcceso();
-
+	require_once "../config.php";
+	comprobarAcceso();
 ?>
 <html>
 <head>
-	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo $_SESSION['ESTILO_SITIO']; ?>/sitio.css">
+	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO?>/sitio.css">
 </head>
 <body>
 	<?php mostrarHeader("Menu");?>
