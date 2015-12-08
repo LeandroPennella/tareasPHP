@@ -11,8 +11,6 @@ USE `tareas`;
 -- ==============================================================================
 
 
--- Create Table: Lugares
--- ------------------------------------------------------------------------------
 CREATE TABLE Lugares
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -30,8 +28,6 @@ CREATE TABLE comentario_rolHabilitado
 	,`rolHabilitado_id` INT NOT NULL 
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Create Table: rol_usuario
--- ------------------------------------------------------------------------------
 CREATE TABLE rol_usuario
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -42,8 +38,6 @@ CREATE TABLE rol_usuario
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- Create Table: Auditoria
--- ------------------------------------------------------------------------------
 CREATE TABLE Auditoria
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -54,8 +48,6 @@ CREATE TABLE Auditoria
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- Create Table: Georeferencia
--- ------------------------------------------------------------------------------
 CREATE TABLE Georeferencia
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -67,9 +59,6 @@ CREATE TABLE Georeferencia
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: comentario_usuarioHabilitado
--- ------------------------------------------------------------------------------
 CREATE TABLE comentario_usuarioHabilitado
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -79,9 +68,6 @@ CREATE TABLE comentario_usuarioHabilitado
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: Fechas
--- ------------------------------------------------------------------------------
 CREATE TABLE Fechas
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -93,9 +79,6 @@ CREATE TABLE Fechas
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: Asignaciones
--- ------------------------------------------------------------------------------
 CREATE TABLE Asignaciones
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -105,9 +88,6 @@ CREATE TABLE Asignaciones
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: adjuntos
--- ------------------------------------------------------------------------------
 CREATE TABLE adjuntos
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -118,9 +98,6 @@ CREATE TABLE adjuntos
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: comentarios
--- ------------------------------------------------------------------------------
 CREATE TABLE comentarios
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -133,9 +110,6 @@ CREATE TABLE comentarios
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: imagenes
--- ------------------------------------------------------------------------------
 CREATE TABLE imagenes
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -146,9 +120,6 @@ CREATE TABLE imagenes
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: Proyectos
--- ------------------------------------------------------------------------------
 CREATE TABLE Proyectos
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -159,9 +130,6 @@ CREATE TABLE Proyectos
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: Usuarios
--- ------------------------------------------------------------------------------
 CREATE TABLE Usuarios
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -175,9 +143,6 @@ CREATE TABLE Usuarios
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: roles
--- ------------------------------------------------------------------------------
 CREATE TABLE roles
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -186,9 +151,6 @@ CREATE TABLE roles
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: Tareas
--- ------------------------------------------------------------------------------
 CREATE TABLE Tareas
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -201,9 +163,6 @@ CREATE TABLE Tareas
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: Listas
--- ------------------------------------------------------------------------------
 CREATE TABLE Listas
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -212,9 +171,6 @@ CREATE TABLE Listas
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: TareasComentarios
--- ------------------------------------------------------------------------------
 CREATE TABLE TareasComentarios
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -227,9 +183,6 @@ CREATE TABLE TareasComentarios
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: Etiquetas
--- ------------------------------------------------------------------------------
 CREATE TABLE Etiquetas
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -239,9 +192,6 @@ CREATE TABLE Etiquetas
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: Tarea_Etiqueta
--- ------------------------------------------------------------------------------
 CREATE TABLE Tarea_Etiqueta
 (
 	`Tarea_id` INT NOT NULL 
@@ -251,9 +201,6 @@ CREATE TABLE Tarea_Etiqueta
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Table: Contrasenia
--- ------------------------------------------------------------------------------
 CREATE TABLE Contrasenias
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -263,108 +210,56 @@ CREATE TABLE Contrasenias
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- Create Foreign Key: Proyectos.proyectoPadre_id -> Proyectos.id
 ALTER TABLE Proyectos ADD FOREIGN KEY (proyectoPadre_id) REFERENCES Proyectos(id);
 
-
--- Create Foreign Key: imagenes.comentario_id -> comentarios.id
 ALTER TABLE imagenes ADD FOREIGN KEY (comentario_id) REFERENCES comentarios(id);
 
-
--- Create Foreign Key: adjuntos.comentario_id -> comentarios.id
 ALTER TABLE adjuntos ADD FOREIGN KEY (comentario_id) REFERENCES comentarios(id);
 
-
--- Create Foreign Key: comentario_rolHabilitado.comentario_id -> comentarios.id
 ALTER TABLE comentario_rolHabilitado ADD FOREIGN KEY (comentario_id) REFERENCES comentarios(id);
 
-
--- Create Foreign Key: comentario_usuarioHabilitado.comentario_id -> comentarios.id
 ALTER TABLE comentario_usuarioHabilitado ADD FOREIGN KEY (comentario_id) REFERENCES comentarios(id);
 
-
--- Create Foreign Key: rol_usuario.rol_id -> roles.id
 ALTER TABLE rol_usuario ADD FOREIGN KEY (rol_id) REFERENCES roles(id);
 
-
--- Create Foreign Key: rol_usuario.usuario_id -> Usuarios.id
 ALTER TABLE rol_usuario ADD FOREIGN KEY (usuario_id) REFERENCES Usuarios(id);
 
-
--- Create Foreign Key: comentarios.autor_id -> Usuarios.id
 ALTER TABLE comentarios ADD FOREIGN KEY (autor_id) REFERENCES Usuarios(id);
 
-
--- Create Foreign Key: comentario_rolHabilitado.rolHabilitado_id -> roles.id
 ALTER TABLE comentario_rolHabilitado ADD FOREIGN KEY (rolHabilitado_id) REFERENCES roles(id);
 
-
--- Create Foreign Key: comentario_usuarioHabilitado.usuarioHabilitado_id -> Usuarios.id
 ALTER TABLE comentario_usuarioHabilitado ADD FOREIGN KEY (usuarioHabilitado_id) REFERENCES Usuarios(id);
 
-
--- Create Foreign Key: comentarios.poyecto_id -> Proyectos.id
 ALTER TABLE comentarios ADD FOREIGN KEY (poyecto_id) REFERENCES Proyectos(id);
 
-
--- Create Foreign Key: Tareas.usuarioCreador_id -> Usuarios.id
 ALTER TABLE Tareas ADD FOREIGN KEY (usuarioCreador_id) REFERENCES Usuarios(id);
 
-
--- Create Foreign Key: Fechas.Tarea_id -> Tareas.id
 ALTER TABLE Fechas ADD FOREIGN KEY (Tarea_id) REFERENCES Tareas(id);
 
-
--- Create Foreign Key: Georeferencia.tarea_id -> Tareas.id
 ALTER TABLE Georeferencia ADD FOREIGN KEY (tarea_id) REFERENCES Tareas(id);
 
-
--- Create Foreign Key: Lugares.id -> Georeferencia.lugar_id
 -- ALTER TABLE Lugares ADD FOREIGN KEY (id) REFERENCES Georeferencia(lugar_id); -- no siempre se relacione con un lugar
 
-
--- Create Foreign Key: Auditoria.Tarea_id -> Tareas.id
 ALTER TABLE Auditoria ADD FOREIGN KEY (Tarea_id) REFERENCES Tareas(id);
 
-
--- Create Foreign Key: Asignaciones.tarea_id -> Auditoria.Tarea_id
 ALTER TABLE Asignaciones ADD FOREIGN KEY (tarea_id) REFERENCES Auditoria(Tarea_id);
 
-
--- Create Foreign Key: Asignaciones.usuarioAsignado_id -> Usuarios.id
 ALTER TABLE Asignaciones ADD FOREIGN KEY (usuarioAsignado_id) REFERENCES Usuarios(id);
 
-
--- Create Foreign Key: TareasComentarios.tarea_id -> Tareas.id
 ALTER TABLE TareasComentarios ADD FOREIGN KEY (tarea_id) REFERENCES Tareas(id);
 
-
--- Create Foreign Key: TareasComentarios.comentarioComentado_id -> TareasComentarios.id
 ALTER TABLE TareasComentarios ADD FOREIGN KEY (comentarioComentado_id) REFERENCES TareasComentarios(id);
 
-
--- Create Foreign Key: TareasComentarios.usuario_id -> Usuarios.id
 ALTER TABLE TareasComentarios ADD FOREIGN KEY (usuario_id) REFERENCES Usuarios(id);
 
-
--- Create Foreign Key: Tarea_Etiqueta.Tarea_id -> Tareas.id
 ALTER TABLE Tarea_Etiqueta ADD FOREIGN KEY (Tarea_id) REFERENCES Tareas(id);
 
-
--- Create Foreign Key: Etiquetas.EtiquetaPadre_id -> Etiquetas.id
 ALTER TABLE Etiquetas ADD FOREIGN KEY (EtiquetaPadre_id) REFERENCES Etiquetas(id);
 
-
--- Create Foreign Key: Contrasenia.usuario_id -> Usuarios.id
 ALTER TABLE Contrasenias ADD FOREIGN KEY (usuario_id) REFERENCES Usuarios(id);
 
-
--- Create Foreign Key: Listas.id -> Tareas.Lista_id
 -- ALTER TABLE Listas ADD FOREIGN KEY (id) REFERENCES Tareas(Lista_id); -- nose porque no anda
 
-
--- Create Foreign Key: Tarea_Etiqueta.Etiqueta_id -> Etiquetas.id
 ALTER TABLE Tarea_Etiqueta ADD FOREIGN KEY (Etiqueta_id) REFERENCES Etiquetas(id);
 
 
