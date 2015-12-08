@@ -27,9 +27,9 @@
 	//print("instalador desactivado<br>");
 	//rename ("indexFinal.php" , "..\index.php");
 	//print("fin de la instalacion<br>");
-	copy("indexFinal.php" , "..\index.php");
+	//copy("indexFinal.php" , "..\index.php");
 	//http_redirect ("..\index.php");
-	header('Location: ..\index.php');
+	header('Location: indexFinal.php');
 
 function crearBD($host,$nombreBD,$usuarioBD,$contraseniaUsuarioBD,$nombreUsuario,$contrasenia)
 {
