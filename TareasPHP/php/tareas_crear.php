@@ -1,7 +1,8 @@
 <?php
-	session_start();
 	require_once "../config.php"; 
-	comprobarAcceso();
+	//session_start();
+	
+	//comprobarAcceso();
 	$db=getDB();
 	$sql="select * from Usuarios";
     if ($result = $db->query($sql)) 
@@ -9,10 +10,19 @@
 ?>
 <html>
 <head>
-	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo $_SESSION['ESTILO_SITIO']; ?>/sitio.css">
-	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo $_SESSION['ESTILO_SITIO']; ?>/listado.css">
+	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/sitio.css">
+	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/listado.css">
 </head>
 <body>
+	<?php
+	if (isset($_SESSION["mensajeError"])){
+		?>
+		<div class="error">
+		<?php echo $_SESSION["mensajeError"] ?>
+		</div>
+		<?php 
+	}
+	?>
 	<form action="../scripts/tareas_crear.php" method="post">
 		<table>
 			<tr>
@@ -27,6 +37,7 @@
 						    	<th scope='col'>incluir</th>
 						    	<th scope='col'>Foto</th>
 						    	<th scope='col'>Usuario</th>
+						    	<th scope='col'>Mail</th>
 					    	</tr>
 				    	</thead>
 				    	<tbody>
@@ -48,7 +59,7 @@
 				</td>
 			</tr>
 		</table>
-  		<p><input type="submit" /></p>
+  		<p><input type="submit" /></p>   
 	</form>
 	</body>
 </html>

@@ -1,8 +1,13 @@
 <?php
-  $idUsuario = $_POST['idUsuario'];
+session_start();
+
+if (isset($_POST['idUsuario'])){$idUsuario = $_POST['idUsuario'];}
+  
   if(empty($idUsuario)) 
   {
-    echo("You didn't select any buildings.");
+  	$_SESSION["mensajeError"]="Debe seleccionar al menos un usuario";
+  	header("Location: ../php/tareas_crear.php");
+	die();
   } 
   else
   {
