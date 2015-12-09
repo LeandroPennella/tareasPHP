@@ -11,12 +11,12 @@ if (isset($_POST['idUsuario'])){$idUsuario = $_POST['idUsuario'];}
   } 
   else
   {
-    $N = count($idUsuario);
- 
-    echo("You selected $N door(s): ");
+ 	echo "tarea :".$_POST['tarea']."<br/>";
+  	$N = count($idUsuario);
+    echo("usuarios seleccionados: $N <br/>");
     for($i=0; $i < $N; $i++)
     {
-      echo($idUsuario[$i] . " ");
+      echo("usuario:".$idUsuario[$i] . " ");
     }
   }
 ?>

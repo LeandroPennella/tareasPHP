@@ -31,7 +31,7 @@ if (!isset($_SESSION["login"])||($_SESSION["login"]!="true"))//no esta logueado
 
 			$clasePanel="panel panelLogin";
 			$claseError="error";
-			$direccionRegistro="registro.php";
+
 			if($clasePanel==""){$clasePanel="panelLogin";}
 			?>
 			<div class="<?php echo $clasePanel;?>">
@@ -47,7 +47,7 @@ if (!isset($_SESSION["login"])||($_SESSION["login"]!="true"))//no esta logueado
 					}
 				?>
 				
-				<form  action="../scripts/loginProcesa.php" method="post" id="loginForm">
+				<form  action="../scripts/prc.login.php" method="post" id="loginForm">
 					<label for="usuario">Usuario</label>
 					<input type="text" name="usuario" /><br/>
 					<label for="contrasena">Contraseña</label>
@@ -57,7 +57,7 @@ if (!isset($_SESSION["login"])||($_SESSION["login"]!="true"))//no esta logueado
 				</form>
 				
 
-				<a  href="<?php echo $direccionRegistro?>">Registrarse</a>
+				<a  href="usuariosRegistro.php">Registrarse</a>
 
 			</div>
 		</body>

@@ -23,12 +23,12 @@
 		<?php 
 	}
 	?>
-	<form action="../scripts/tareas_crear.php" method="post">
+	<form action="../scripts/prc.tareasCrear.php" method="post">
 		<table>
 			<tr>
 				<td>
 				<label for="Tarea">Tarea</label>
-				<input type="text" name="Tarea" /><br/>
+				<input type="text" name="tarea" /><br/>
 				</td>
 				<td>
 					<table id='box-table-a' summary='Usuarios'>

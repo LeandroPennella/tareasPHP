@@ -1,7 +1,7 @@
 <?php
 
 require_once "../config.php";
-require_once "../scripts/registroProcesarImagen.php";
+require_once "../scripts/fnc.registroProcesarImagen.php";
 session_start();
 
 function imprimirPOST($variable)
