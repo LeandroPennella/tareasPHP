@@ -40,7 +40,7 @@
 	        echo "<td>".$obj->nombre."</td>";
 	        echo "<td>".$obj->apellido."</td>";
 	        echo "<td>".$obj->fechaNacimiento."</td>";
-	        echo "<td>".$obj->mail."</td>";
+	        echo "<td>".$obj->correoElectronico."</td>";
 	        echo "</tr>";
 	    } 
 	    echo "</tr></tbody></table>";

@@ -1,13 +1,9 @@
 <?php
-/*
-if(!isset($_SESSION)) {
-	session_start();
-}
-	*/
+
 require_once '../config.php';
-require_once "fnc.registroProcesarImagen.php";
-require_once "fnc.registro.php";
-require_once "fnc.registroValidar.php";
+require_once "registroProcesarImagen.fnc.php";
+require_once "registroFunciones.fnc.php";
+require_once "registroValidar.fnc.php";
 $claseError="error";
 //function imprimirFormulario($tiposDocumento,$carreras)
 //{

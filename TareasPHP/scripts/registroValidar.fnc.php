@@ -4,7 +4,7 @@
 //validar;
 function validarRegistro()
 {
-	$fotoValida=(($_POST["nombreFoto"]!="")||($_POST["nombreFotoNueva"]!=""));
+	//$fotoValida=$_POST["fotoArchivo"]!="";//||($_POST["nombreFotoNueva"]!="")); //TODO: tiene que validar?
 	$nombreValido=$_POST["nombre"]!=""&&solo_letras($_POST["nombre"]);//(preg_match('/[^a-Z]/',$_POST["nombre"]));
 	$apellidoValido=$_POST["apellido"]&&solo_letras($_POST["apellido"]);//preg_match('/[^a-Z]/',$_POST["apellido"]));
 	$mailValido=filter_var($_POST["eMail"], FILTER_VALIDATE_EMAIL);
@@ -23,7 +23,7 @@ function validarRegistro()
 	if (!$mailValido){return "Introducir un mail valido";}
 	if (!$fechaCargada){return "Introducir una fecha de nacimiento ";}
 	if (!$fechaValida){return "Introducir una fecha de nacimiento valida";}
-	//if (!$claveCargada){return "Introducir una clave";}
+	if (!$claveCargada){return "Introducir una clave";}
 	if (!$clavesIguales){return "las claves no concuerdan";}
 	else 		
 	{return "ok";}
@@ -32,7 +32,7 @@ function validarRegistro()
 
 function solo_letras($cadena)
 { 
-	$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZñÑáéíóúÁÉÍÓÚ- "; 
+	$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZñÑáéíóúÁÉÍÓÚ"; 
 	for ($i=0; $i<strlen($cadena); $i++)
 	{ 
 		if (strpos($permitidos, substr($cadena,$i,1))===false){return false;} 

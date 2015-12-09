@@ -131,7 +131,7 @@ CREATE TABLE Usuarios
 	,`nombre` VARCHAR(250)  NULL 
 	,`apellido` VARCHAR(250)  NULL
 	,`fechaNacimiento` DATE  NULL
-	,`mail` VARCHAR(250)  NULL 
+	,`correoElectronico` VARCHAR(250)  NULL 
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

@@ -1,5 +1,5 @@
 
-<?php include '../scripts/prc.registroIngresar.php'; ?>
+<?php include '../scripts/registroProcesar.inc.php'; ?>
 
 <html>
 <head>
@@ -19,7 +19,7 @@
 	
 
 		
-		<form action="../scripts/prc.registroIngresar.php" method="post" enctype="multipart/form-data">
+		<form action="usuariosRegistro.php" method="post" enctype="multipart/form-data">
 		<div>	
 		<?php
 		/*
@@ -101,7 +101,7 @@
 			<?php } ?>
 			
 			<label>Foto</label>
-			<input type="file" name="foto" ><br>
+			<input type="file" name="fotoArchivo" ><br>
 			
 			<input type="submit" name="enviarFormulario" value="Enviar"/>
 			</div>

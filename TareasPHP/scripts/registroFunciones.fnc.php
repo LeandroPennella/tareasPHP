@@ -1,7 +1,7 @@
 <?php
 
 require_once "../config.php";
-require_once "../scripts/fnc.registroProcesarImagen.php";
+require_once "../scripts/registroProcesarImagen.fnc.php";
 
 
 function imprimirPOST($variable)
@@ -59,8 +59,9 @@ function obtenerUsuarioActual()
 
 function guardarUsuario()
 {		
-	$connection = getDBparcial();
-	$usuarioFoto ='"'.$connection->real_escape_string(trim($_POST["nombreFoto"])).'"';
+	$connection = getDB();
+	$usuarioFoto=(isset($_POST["nombreFoto"])&&$_POST["nombreFoto"]!="")?$connection->real_escape_string(trim($_POST["nombreFoto"])):"";
+	$usuarioFoto ='"'.$usuarioFoto.'"';
 	$usuarioNombre ='"'.$connection->real_escape_string(trim($_POST["nombre"])).'"';
 	$usuarioApellido ='"'.$connection->real_escape_string(trim($_POST["apellido"])).'"';
 	$usuarioFechaNacimiento ='"'.$_POST["anio"].'-'.$_POST["mes"]."-".$_POST["dia"].'"';
@@ -70,16 +71,19 @@ function guardarUsuario()
 	$usuarioClave = sha1($usuarioCorreoElectronico.$usuarioClave);
 
 	
-	$sqlInsert='INSERT INTO usuarios (nombre, apellido, fechaNacimiento,correoElectronico, foto, claveAcceso) VALUES ';
+	$sqlInsert='INSERT INTO usuarios (nombre, apellido, fechaNacimiento,correoElectronico, foto) VALUES ';
 	$sqlInsert.='('.$usuarioNombre.','.$usuarioApellido.','.$usuarioFechaNacimiento.','.$usuarioCorreoElectronico.','.$usuarioFoto.',"'.$usuarioClave.'")';
 	
-
+	 
 	
 
 	//MySqli Insert Query
 	$insert_row = $connection->query($sqlInsert);
 	
-	if($insert_row){$resultado=true; }
+	if($insert_row){
+		$idUsuario=mysql_insert_id();
+		echo $insert_row;
+		$resultado=true; }
 	else{die('Error : ('. $connection->errno .') '. $connection->error);$resultado=false;}
 	
 	//mysqli_query($connection, $sqlInsert);
@@ -91,7 +95,7 @@ function guardarUsuario()
 
 function modificarUsuario()
 {		
-	$connection = getDBparcial();
+	$connection = getDB();
 	if ($_POST["nombreFotoNueva"]=="")
 	{$usuarioFoto ='"'.$connection->real_escape_string($_POST["nombreFoto"]).'"';}
 	else
