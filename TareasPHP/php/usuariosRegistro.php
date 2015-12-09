@@ -1,5 +1,5 @@
 
-<?php include '../scripts/inc.registro.php'; ?>
+<?php include '../scripts/prc.registroIngresar.php'; ?>
 
 <html>
 <head>
@@ -19,7 +19,7 @@
 	
 
 		
-		<form action="registro.php" method="post" enctype="multipart/form-data">
+		<form action="../scripts/prc.registroIngresar.php" method="post" enctype="multipart/form-data">
 		<div>	
 		<?php
 		/*
