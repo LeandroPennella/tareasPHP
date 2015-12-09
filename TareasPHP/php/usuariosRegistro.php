@@ -1,11 +1,12 @@
+
 <?php include '../scripts/inc.registro.php'; ?>
 
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo $_SESSION['ESTILO_SITIO']; ?>/sitio.css">
-	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo $_SESSION['ESTILO_SITIO']; ?>/registro.css">
-	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo $_SESSION['ESTILO_SITIO']; ?>/paneles.css">
+	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/sitio.css">
+	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/registro.css">
+	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/paneles.css">
 </head>
 <body>
 <div class="panel panelRegistro">
