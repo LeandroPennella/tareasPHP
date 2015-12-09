@@ -256,13 +256,14 @@ ALTER TABLE Tarea_Etiqueta ADD FOREIGN KEY (Etiqueta_id) REFERENCES Etiquetas(id
 
 ";
 
+/*
 $SQLInsertarDatos="
 
 INSERT INTO roles (rol) VALUES ('Administrador');
 INSERT INTO usuarios (usuario) VALUES ('Leandro');
 INSERT INTO contrasenias (contrasenia,usuario_id) VALUES ('Leandro',1);
 ";
-
+*/
 
 
 ?>
