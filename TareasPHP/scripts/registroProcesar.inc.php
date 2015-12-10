@@ -55,6 +55,7 @@ else
 		$_SESSION["registro"]["modo"]="modificar";
 		
 		$usuario=obtenerUsuarioActual();
+		$_POST["usuario"]=$usuario->usuario;
 		$_POST["nombre"]=$usuario->nombre;
 		$_POST["apellido"]=$usuario->apellido;
 		$_POST["eMail"]=$usuario->correoElectronico;

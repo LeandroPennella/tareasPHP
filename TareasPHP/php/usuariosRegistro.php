@@ -46,7 +46,11 @@
 		</div>
 		<div>
 				
-			
+
+			<label>Usuario</label>
+			<input type="text" name="usuario" value="<?php imprimirPOST("usuario");?>" />
+			<br/>
+						
 			<label>Nombre</label>
 			<input type="text" name="nombre" value="<?php imprimirPOST("nombre");?>" />
 			<br/>

@@ -62,33 +62,41 @@ function guardarUsuario()
 	$connection = getDB();
 	$usuarioFoto=(isset($_POST["nombreFoto"])&&$_POST["nombreFoto"]!="")?$connection->real_escape_string(trim($_POST["nombreFoto"])):"";
 	$usuarioFoto ='"'.$usuarioFoto.'"';
+	$usuarioUsuario ='"'.$connection->real_escape_string(trim($_POST["usuario"])).'"';
 	$usuarioNombre ='"'.$connection->real_escape_string(trim($_POST["nombre"])).'"';
 	$usuarioApellido ='"'.$connection->real_escape_string(trim($_POST["apellido"])).'"';
 	$usuarioFechaNacimiento ='"'.$_POST["anio"].'-'.$_POST["mes"]."-".$_POST["dia"].'"';
 	$usuarioCorreoElectronico ='"'.$connection->real_escape_string(trim($_POST["eMail"])).'"';
-	$usuarioClave ='"'.$connection->real_escape_string(trim($_POST["clave"])).'"';
+	$usuarioClave =$connection->real_escape_string(trim($_POST["clave"]));
 
-	$usuarioClave = sha1($usuarioCorreoElectronico.$usuarioClave);
+	$usuarioClave = '"'.sha1($usuarioCorreoElectronico.$usuarioClave).'"';
 
 	
-	$sqlInsert='INSERT INTO usuarios (nombre, apellido, fechaNacimiento,correoElectronico, foto) VALUES ';
-	$sqlInsert.='('.$usuarioNombre.','.$usuarioApellido.','.$usuarioFechaNacimiento.','.$usuarioCorreoElectronico.','.$usuarioFoto.',"'.$usuarioClave.'")';
+	$sqlInsert='INSERT INTO usuarios (usuario,nombre, apellido, fechaNacimiento,correoElectronico, foto) VALUES ';
+	$sqlInsert.='('.$usuarioUsuario.','.$usuarioNombre.','.$usuarioApellido.','.$usuarioFechaNacimiento.','.$usuarioCorreoElectronico.','.$usuarioFoto.')';
 	
 	 
-	
-
-	//MySqli Insert Query
 	$insert_row = $connection->query($sqlInsert);
 	
+	$resultado=false;
+	
 	if($insert_row){
-		$idUsuario=mysql_insert_id();
-		echo $insert_row;
-		$resultado=true; }
-	else{die('Error : ('. $connection->errno .') '. $connection->error);$resultado=false;}
+		$idNuevoUsuario=$connection->insert_id;
+		
+		$sqlInsert='INSERT INTO contrasenias (contrasenia,usuario_id) VALUES';
+		$sqlInsert.='('.$usuarioClave.','.$idNuevoUsuario.')';
+		$insert_row = $connection->query($sqlInsert);
+		if($insert_row){
+			$resultado=true;} 
+		
+	}
+	
+	if ($resultado=false)
+		{die('Error : ('. $connection->errno .') '. $connection->error);}
 	
 	//mysqli_query($connection, $sqlInsert);
 	//mysqli_close($connection);
-	$connection->close;
+	$connection->close();
 	return $resultado;
 
 }

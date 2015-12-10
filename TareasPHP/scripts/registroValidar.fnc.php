@@ -5,6 +5,7 @@
 function validarRegistro()
 {
 	//$fotoValida=$_POST["fotoArchivo"]!="";//||($_POST["nombreFotoNueva"]!="")); //TODO: tiene que validar?
+	$usuarioValido=$_POST["usuario"]!="";//(preg_match('/[^a-Z]/',$_POST["nombre"]));
 	$nombreValido=$_POST["nombre"]!=""&&solo_letras($_POST["nombre"]);//(preg_match('/[^a-Z]/',$_POST["nombre"]));
 	$apellidoValido=$_POST["apellido"]&&solo_letras($_POST["apellido"]);//preg_match('/[^a-Z]/',$_POST["apellido"]));
 	$mailValido=filter_var($_POST["eMail"], FILTER_VALIDATE_EMAIL);
@@ -18,6 +19,7 @@ function validarRegistro()
 		$error["mensaje"]="fecha invalida";
 	*/
 	//if (!$fotoValida){return "Error al cargar la foto";}
+	if (!$usuarioValido){return "Introducir un usuario valido";}
 	if (!$nombreValido){return "Introducir un nombre valido";}
 	if (!$apellidoValido){return "Introducir un apellido valido";}
 	if (!$mailValido){return "Introducir un mail valido";}
