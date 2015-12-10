@@ -18,9 +18,9 @@ if(!isset(\$_SESSION)) {
 	session_start();
 }
 	
-require_once DIR_LIBRERIAS.\"header.php\";
+require_once DIR_LIBRERIAS.\"header.fnc.php\";
 require_once DIR_LIBRERIAS.\"sql.php\";
-require_once DIR_LIBRERIAS.\"funcionesAutenticacion.php\";
+require_once DIR_LIBRERIAS.\"Autenticacion.fnc.php\";
 
 		
 \$raiz=\"localhost/TareasPHP\";

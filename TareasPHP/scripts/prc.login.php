@@ -8,10 +8,12 @@ if (mysqli_connect_error()) {die('Error de Conexión (' . mysqli_connect_errno()
 
 
 $usuario = (isset($_POST['usuario'])) ? $_POST['usuario'] : '';
-$clave = (isset($_POST['contrasena'])) ? $_POST['contrasena'] : '';
+$clave = (isset($_POST['clave'])) ? $_POST['clave'] : '';
 
 $usuario = '"'.$mysqli->real_escape_string(trim($usuario)).'"';
-$clave = '"'.$mysqli->real_escape_string(trim($clave)).'"';
+
+$clave = $mysqli->real_escape_string(trim($clave));
+$clave ='"'.sha1($usuarioCorreoElectronico.$clave).'"';
 
 if (!trim($usuario) || !trim($clave))
 {
@@ -27,7 +29,7 @@ if (!trim($usuario) || !trim($clave))
 
 $sql="SELECT distinct 1 FROM usuarios  u
 inner join contrasenias c on c.usuario_id=u.id
-where u.usuario=$usuario and c.contrasenia=$clave";
+where u.usuario=$usuario and c.clave=$clave";
 
 
 //echo (sql_contarRegistros($mysqli, $sql));

@@ -18,9 +18,9 @@ if(!isset($_SESSION)) {
 	session_start();
 }
 
-require_once DIR_LIBRERIAS."header.php";
+require_once DIR_LIBRERIAS."header.fnc.php";
 require_once DIR_LIBRERIAS."sql.php";
-require_once DIR_LIBRERIAS."funcionesAutenticacion.php";
+require_once DIR_LIBRERIAS."Autenticacion.fnc.php";
 
 //require_once "http://".$_SERVER['SERVER_NAME'].DIR_LOGIN.URL_LOGIN;
 //$raiz=dirname($_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF']);

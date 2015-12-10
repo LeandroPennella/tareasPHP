@@ -31,7 +31,7 @@ function validarLogin()
 	
 	$sql="SELECT distinct 1 FROM usuarios  u 
 	inner join contrasenias c on c.usuario_id=u.id
-	where u.usuario=$usuario and c.contrasenia=$clave";
+	where u.usuario=$usuario and c.clave=$clave";
 
 	
 	//echo (sql_contarRegistros($mysqli, $sql));

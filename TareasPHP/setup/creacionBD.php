@@ -197,7 +197,7 @@ CREATE TABLE Contrasenias
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
-	,`contrasenia` VARCHAR(50) NOT NULL 
+	,`clave` VARCHAR(50) NOT NULL 
 	,`usuario_id` INT NOT NULL 
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -1,20 +1,14 @@
 <?php 
-
 require_once '../config.php';
 //require_once '../scripts/funcionesLogin.php';
-
 if (!isset($_SESSION["login"])||($_SESSION["login"]!="true"))//no esta logueado
 {
-	
-
 /*
 	if (isset($_GET["accionLogin"])&&($_GET["accionLogin"]=="validar"))
 	{
 		
 		validarLogin();
 	}
-
-
 	else
 	{
 	*/
@@ -26,12 +20,9 @@ if (!isset($_SESSION["login"])||($_SESSION["login"]!="true"))//no esta logueado
 			<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/sitio.css">
 		</head>
 		<body>
-		
 			<?php
-
 			$clasePanel="panel panelLogin";
 			$claseError="error";
-
 			if($clasePanel==""){$clasePanel="panelLogin";}
 			?>
 			<div class="<?php echo $clasePanel;?>">
@@ -50,13 +41,12 @@ if (!isset($_SESSION["login"])||($_SESSION["login"]!="true"))//no esta logueado
 				<form  action="../scripts/prc.login.php" method="post" id="loginForm">
 					<label for="usuario">Usuario</label>
 					<input type="text" name="usuario" /><br/>
-					<label for="contrasena">Contraseña</label>
-					<input type="password" name="contrasena" /><br/>
+					<label for="clave">Contraseña</label>
+					<input type="password" name="clave" /><br/>
 					
 					<a class="boton" href="javascript:{}" onclick="document.getElementById('loginForm').submit();">Ingresar</a> 
 				</form>
 				
-
 				<a  href="usuariosRegistro.php">Registrarse</a>
 
 			</div>

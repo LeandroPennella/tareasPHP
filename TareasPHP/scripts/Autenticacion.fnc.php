@@ -16,7 +16,7 @@ function comprobarAcceso()
 {
 	if (!estaLogueado())
 	{
-		header('Location: http://'.RAIZ_URL.'/php/login.php');
+		header('Location: http://'.RAIZ_URL.'/php/usuariosLogin.php');
 	}
 }
 ?>

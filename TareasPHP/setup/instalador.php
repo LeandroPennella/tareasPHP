@@ -83,8 +83,9 @@ function crearBD($host,$nombreBD,$usuarioBD,$contraseniaUsuarioBD,$nombreUsuario
 		printf("usuario insertado.id=".$idUsuario."\n<br>");
 	}
 
+	$contrasenia=sha1($usuarioCorreoElectronico.$usuarioClave);
 	//Agregar contraseña a usuario
-	if ($stmt = $mysqli->prepare("INSERT INTO contrasenias (contrasenia, usuario_id) VALUES (?,?);"))
+	if ($stmt = $mysqli->prepare("INSERT INTO contrasenias (clave, usuario_id) VALUES (?,?);"))
 	{
 		$stmt->bind_param('si', $contrasenia,$idUsuario);
 		$stmt->execute();

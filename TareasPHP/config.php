@@ -1,5 +1,4 @@
 <?php
-
 define("SQL_HOST","localhost");
 define("SQL_US","usuarioBD");
 define("SQL_PW","passwordBD");
@@ -18,9 +17,9 @@ if(!isset($_SESSION)) {
 	session_start();
 }
 	
-require_once DIR_LIBRERIAS."fnc.header.php";
+require_once DIR_LIBRERIAS."header.fnc.php";
 require_once DIR_LIBRERIAS."sql.php";
-require_once DIR_LIBRERIAS."fnc.Autenticacion.php";
+require_once DIR_LIBRERIAS."Autenticacion.fnc.php";
 
 		
 $raiz="localhost/TareasPHP";
