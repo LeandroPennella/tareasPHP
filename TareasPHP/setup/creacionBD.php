@@ -202,6 +202,10 @@ CREATE TABLE Contrasenias
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+		";
+
+
+$SQLCrearTablasBDRelaciones="
 ALTER TABLE Proyectos ADD FOREIGN KEY (proyectoPadre_id) REFERENCES Proyectos(id);
 
 ALTER TABLE imagenes ADD FOREIGN KEY (comentario_id) REFERENCES comentarios(id);

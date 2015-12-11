@@ -62,7 +62,21 @@ function crearBD($host,$nombreBD,$usuarioBD,$contraseniaUsuarioBD,$nombreUsuario
 		exit(); 
 	} 
 
+	printf("Tablas creadas exitosamente.\n<br>");
+	
+	//Crear RelacionesTablas
+	if ($mysqli->multi_query($SQLCrearTablasBDRelaciones))
+	{
+		do{} while($mysqli->more_results() && $mysqli->next_result());
+	}
+	else
+	{
+		print "<br>Error al crear tablas - <i>Error:</i> ".$mysqli->error()." <i>Código:</i> ".$mysqli->errno();
+		exit();
+	}
 
+	printf("Relaciones creadas exitosamente.\n<br>");
+	
 	//Agregar Rol Administrador
 	if ($stmt = $mysqli->prepare("INSERT INTO roles (rol) VALUES (?);"))
 	{

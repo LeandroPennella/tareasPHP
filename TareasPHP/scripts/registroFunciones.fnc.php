@@ -73,7 +73,7 @@ function guardarUsuario()
 
 	$usuarioUsuario ='"'.$usuarioUsuario .'"';
 	$usuarioClave = '"'.$usuarioClave.'"';
-	S
+	
 	
 	$sqlInsert='INSERT INTO usuarios (usuario,nombre, apellido, fechaNacimiento,correoElectronico, foto) VALUES ';
 	$sqlInsert.='('.$usuarioUsuario.','.$usuarioNombre.','.$usuarioApellido.','.$usuarioFechaNacimiento.','.$usuarioCorreoElectronico.','.$usuarioFoto.')';
