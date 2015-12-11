@@ -38,7 +38,7 @@ if (!isset($_SESSION["login"])||($_SESSION["login"]!="true"))//no esta logueado
 					}
 				?>
 				
-				<form  action="../scripts/prc.login.php" method="post" id="loginForm">
+				<form  action="../scripts/login.prc.php" method="post" id="loginForm">
 					<label for="usuario">Usuario</label>
 					<input type="text" name="usuario" /><br/>
 					<label for="clave">Contraseña</label>

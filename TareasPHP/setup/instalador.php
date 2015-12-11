@@ -34,6 +34,8 @@
 function crearBD($host,$nombreBD,$usuarioBD,$contraseniaUsuarioBD,$nombreUsuario,$usuarioClave)
 {
 	include ("creacionBD.php");
+	ini_set('max_execution_time', 300);
+	
 	$rol="Administrador";
 	//conectar a BD
 	$mysqli=new mysqli($host,$usuarioBD,$contraseniaUsuarioBD);
@@ -76,6 +78,9 @@ function crearBD($host,$nombreBD,$usuarioBD,$contraseniaUsuarioBD,$nombreUsuario
 	}
 
 	printf("Relaciones creadas exitosamente.\n<br>");
+
+	
+
 	
 	//Agregar Rol Administrador
 	if ($stmt = $mysqli->prepare("INSERT INTO roles (rol) VALUES (?);"))

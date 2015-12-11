@@ -86,7 +86,7 @@ function guardarUsuario()
 	if($insert_row){
 		$idNuevoUsuario=$connection->insert_id;
 		
-		$sqlInsert='INSERT INTO contrasenias (contrasenia,usuario_id) VALUES';
+		$sqlInsert='INSERT INTO contrasenias (clave,usuario_id) VALUES';
 		$sqlInsert.='('.$usuarioClave.','.$idNuevoUsuario.')';
 		$insert_row = $connection->query($sqlInsert);
 		if($insert_row){

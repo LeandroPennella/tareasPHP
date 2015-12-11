@@ -202,10 +202,12 @@ CREATE TABLE Contrasenias
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-		";
+";
 
 
 $SQLCrearTablasBDRelaciones="
+
+
 ALTER TABLE Proyectos ADD FOREIGN KEY (proyectoPadre_id) REFERENCES Proyectos(id);
 
 ALTER TABLE imagenes ADD FOREIGN KEY (comentario_id) REFERENCES comentarios(id);
@@ -244,8 +246,9 @@ ALTER TABLE Asignaciones ADD FOREIGN KEY (usuarioAsignado_id) REFERENCES Usuario
 
 ALTER TABLE TareasComentarios ADD FOREIGN KEY (tarea_id) REFERENCES Tareas(id);
 
-ALTER TABLE TareasComentarios ADD FOREIGN KEY (comentarioComentado_id) REFERENCES TareasComentarios(id);
-
+ALTER TABLE TareasComentarios ADD FOREIGN KEY (comentarioComentado_id) REFERENCES TareasComentarios(id);	
+		
+		
 ALTER TABLE TareasComentarios ADD FOREIGN KEY (usuario_id) REFERENCES Usuarios(id);
 
 ALTER TABLE Tarea_Etiqueta ADD FOREIGN KEY (Tarea_id) REFERENCES Tareas(id);
@@ -253,7 +256,7 @@ ALTER TABLE Tarea_Etiqueta ADD FOREIGN KEY (Tarea_id) REFERENCES Tareas(id);
 ALTER TABLE Etiquetas ADD FOREIGN KEY (EtiquetaPadre_id) REFERENCES Etiquetas(id);
 
 ALTER TABLE Contrasenias ADD FOREIGN KEY (usuario_id) REFERENCES Usuarios(id);
-
+		
 -- ALTER TABLE Listas ADD FOREIGN KEY (id) REFERENCES Tareas(Lista_id); -- nose porque no anda
 
 ALTER TABLE Tarea_Etiqueta ADD FOREIGN KEY (Etiqueta_id) REFERENCES Etiquetas(id);	
