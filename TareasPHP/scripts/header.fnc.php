@@ -11,7 +11,7 @@ function mostrarHeader($tituloPagina)
 	
 	<div style=" float: right;">	
 		<?php echo $_SESSION["usuario"];?>	
-		<a href="http://<?php echo RAIZ_URL?>/php/login.php?accionLogin=logout"  title="LogOut" > 
+		<a href="http://<?php echo RAIZ_URL?>/php/usuariosLogin.php?accionLogin=logout"  title="LogOut" > 
 			<img src="../estilos/<?php echo ESTILO_SITIO ?>/imagenes/logout.png" width="40" height="40" ></img>
 		</a>
 	</div>

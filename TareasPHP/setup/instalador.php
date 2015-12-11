@@ -31,7 +31,7 @@
 	//http_redirect ("..\index.php");
 	header('Location: indexFinal.php');
 
-function crearBD($host,$nombreBD,$usuarioBD,$contraseniaUsuarioBD,$nombreUsuario,$contrasenia)
+function crearBD($host,$nombreBD,$usuarioBD,$contraseniaUsuarioBD,$nombreUsuario,$usuarioClave)
 {
 	include ("creacionBD.php");
 	$rol="Administrador";
@@ -83,11 +83,16 @@ function crearBD($host,$nombreBD,$usuarioBD,$contraseniaUsuarioBD,$nombreUsuario
 		printf("usuario insertado.id=".$idUsuario."\n<br>");
 	}
 
-	$contrasenia=sha1($usuarioCorreoElectronico.$usuarioClave);
+	echo $usuarioClave."<br/>";
+	$usuarioClave=sha1($nombreUsuario.$usuarioClave);
+	echo $usuarioClave."<br/>";
+	//break;
+	
+	
 	//Agregar contraseña a usuario
 	if ($stmt = $mysqli->prepare("INSERT INTO contrasenias (clave, usuario_id) VALUES (?,?);"))
 	{
-		$stmt->bind_param('si', $contrasenia,$idUsuario);
+		$stmt->bind_param('si', $usuarioClave,$idUsuario);
 		$stmt->execute();
 		$stmt->close();
 		printf("contrasenia insertada.\n<br>");

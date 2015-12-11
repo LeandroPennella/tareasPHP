@@ -9,11 +9,13 @@ if (mysqli_connect_error()) {die('Error de Conexión (' . mysqli_connect_errno()
 
 $usuario = (isset($_POST['usuario'])) ? $_POST['usuario'] : '';
 $clave = (isset($_POST['clave'])) ? $_POST['clave'] : '';
+echo $clave."<br/>";
 
-$usuario = '"'.$mysqli->real_escape_string(trim($usuario)).'"';
-
+$usuario = $mysqli->real_escape_string(trim($usuario));
 $clave = $mysqli->real_escape_string(trim($clave));
-$clave ='"'.sha1($usuarioCorreoElectronico.$clave).'"';
+$clave =sha1($usuario.$clave);
+$usuario = '"'.$usuario.'"';
+$clave ='"'.$clave.'"';
 
 if (!trim($usuario) || !trim($clave))
 {
@@ -41,6 +43,8 @@ where u.usuario=$usuario and c.clave=$clave";
 //echo "accion: ".$_GET["accionLogin"];
 //echo "<br/>";
 
+echo $sql;
+
 if (sql_contarRegistros($mysqli, $sql)==1)
 {
 	$_SESSION["login"]="true";
@@ -56,27 +60,24 @@ else // logueo incorrecto
 	//$_SESSION['login']['msg'] = 'Logueo incorrecto';
 }
 /*
-echo "<hr/>";
-echo "--validarLogin----------------------";
-echo "<br/>";
-echo "login: ".$_SESSION["login"];
-echo "<br/>";
-echo "loginError: ".$_SESSION["loginError"];
-echo "<br/>";
-echo "usuario: ".$_SESSION["usuario"];
-echo "<br/>";
-echo "<hr/>";
-
+	echo "<hr/>";
+	echo "--validarLogin----------------------";
+	echo "<br/>";
+	echo "login: ".$_SESSION["login"];
+	echo "<br/>";
+	echo "loginError: ".$_SESSION["loginError"];
+	echo "<br/>";
+	echo "usuario: ".$_SESSION["usuario"];
+	echo "<br/>";
+	echo "<hr/>";
+	//echo "<br/>";
+	//echo "accion: ".$_GET["accionLogin"];
+	//echo "<br/>";
+	//echo "accion: ".$_GET["accionLogin"];
+	//echo "<br/>";
 	*/
-	
-	
-	//echo "<br/>";
-	//echo "accion: ".$_GET["accionLogin"];
-	//echo "<br/>";
-	//echo "accion: ".$_GET["accionLogin"];
-	//echo "<br/>";
 	
 	$mysqli->close();
     unset($sql);
-    header('Location: ../php/login.php');
+    header('Location: ../php/usuariosLogin.php');
 ?>

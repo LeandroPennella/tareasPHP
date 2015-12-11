@@ -62,15 +62,18 @@ function guardarUsuario()
 	$connection = getDB();
 	$usuarioFoto=(isset($_POST["nombreFoto"])&&$_POST["nombreFoto"]!="")?$connection->real_escape_string(trim($_POST["nombreFoto"])):"";
 	$usuarioFoto ='"'.$usuarioFoto.'"';
-	$usuarioUsuario ='"'.$connection->real_escape_string(trim($_POST["usuario"])).'"';
+	$usuarioUsuario =$connection->real_escape_string(trim($_POST["usuario"]));
 	$usuarioNombre ='"'.$connection->real_escape_string(trim($_POST["nombre"])).'"';
 	$usuarioApellido ='"'.$connection->real_escape_string(trim($_POST["apellido"])).'"';
 	$usuarioFechaNacimiento ='"'.$_POST["anio"].'-'.$_POST["mes"]."-".$_POST["dia"].'"';
 	$usuarioCorreoElectronico ='"'.$connection->real_escape_string(trim($_POST["eMail"])).'"';
 	$usuarioClave =$connection->real_escape_string(trim($_POST["clave"]));
 
-	$usuarioClave = '"'.sha1($usuarioCorreoElectronico.$usuarioClave).'"';
+	$usuarioClave = sha1($usuarioUsuario.$usuarioClave);
 
+	$usuarioUsuario ='"'.$usuarioUsuario .'"';
+	$usuarioClave = '"'.$usuarioClave.'"';
+	S
 	
 	$sqlInsert='INSERT INTO usuarios (usuario,nombre, apellido, fechaNacimiento,correoElectronico, foto) VALUES ';
 	$sqlInsert.='('.$usuarioUsuario.','.$usuarioNombre.','.$usuarioApellido.','.$usuarioFechaNacimiento.','.$usuarioCorreoElectronico.','.$usuarioFoto.')';
