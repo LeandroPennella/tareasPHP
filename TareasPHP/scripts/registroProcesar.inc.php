@@ -38,6 +38,7 @@ if (isset($_POST['enviarFormulario']))//segunda pasada
 		//break;
 		
 		procesarImagen(DIR_FOTOPERFIL.$fotoNueva);
+		
 		if(guardarUsuario())
 		{
 			//echo "guardo"."<br/>";

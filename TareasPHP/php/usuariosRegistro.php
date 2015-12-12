@@ -17,12 +17,15 @@
 	
 	<h1>Formulario de Registro</h1>
 	
-
+		<form action="usuariosRegistro.php" method="post" enctype="multipart/form-data">
+			<input type="file" id="file" name="file" accept="image/*" ><br>
+			<input type="submit" name="submitImagen" value="Submit">
+		</form>
 		
 		<form action="usuariosRegistro.php" method="post" enctype="multipart/form-data">
 		<div>	
 		<?php
-		/*
+		
 		if (isset($_POST['submitImagen']))
 		{ ?>
 			<label>Imagen:	</label>			
@@ -41,7 +44,7 @@
 			<input type="file" id="file" name="file" accept="image/*" ><br>
 		<?php 
 		} 
-		*/
+		
 		?>	
 		</div>
 		<div>
