@@ -11,12 +11,12 @@ USE `tareas`;
 -- ==============================================================================
 
 
-CREATE TABLE Lugares
+CREATE TABLE lugares
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	, PRIMARY KEY (id)
 	,`nombre` VARCHAR(250)  NULL 
-	,`Dreccion` VARCHAR(250)  NULL 
+	,`dreccion` VARCHAR(250)  NULL 
 	,`coordenadas` VARCHAR(250)  NULL 
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -38,23 +38,23 @@ CREATE TABLE rol_usuario
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-CREATE TABLE Auditoria
+CREATE TABLE auditoria
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
-	,`Tarea_id` INT NOT NULL 
-	,`Completado` VARCHAR(250)  NULL 
+	,`tarea_id` INT NOT NULL 
+	,`completado` VARCHAR(250)  NULL 
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-CREATE TABLE Georeferencia
+CREATE TABLE georeferencia
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
 	,`tarea_id` INT NOT NULL 
 	,`lugar_id` INT  NULL 
-	,`Direccion` VARCHAR(250)  NULL 
+	,`direccion` VARCHAR(250)  NULL 
 	,`coordenadas` VARCHAR(250)  NULL 
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -68,7 +68,7 @@ CREATE TABLE comentario_usuarioHabilitado
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE Fechas
+CREATE TABLE fechas
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
@@ -79,7 +79,7 @@ CREATE TABLE Fechas
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE Asignaciones
+CREATE TABLE asignaciones
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
@@ -120,7 +120,7 @@ CREATE TABLE imagenes
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE Proyectos
+CREATE TABLE proyectos
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
@@ -130,7 +130,7 @@ CREATE TABLE Proyectos
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE Usuarios
+CREATE TABLE usuarios
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
@@ -151,27 +151,27 @@ CREATE TABLE roles
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE Tareas
+CREATE TABLE tareas
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
-	,`Tarea` VARCHAR(250) NOT NULL 
-	,`Lista_id` INT NOT NULL 
-	,`Prioridad` INT  NULL 
+	,`tarea` VARCHAR(250) NOT NULL 
+	,`lista_id` INT NOT NULL 
+	,`prioridad` INT  NULL 
 	,`usuarioCreador_id` INT NOT NULL 
 	,`fechaCreacion` DATETIME NOT NULL 
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE Listas
+CREATE TABLE listas
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
-	,`Lista` VARCHAR(250)  NULL 
+	,`lista` VARCHAR(250)  NULL 
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE TareasComentarios
+CREATE TABLE tareasComentarios
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
@@ -183,25 +183,25 @@ CREATE TABLE TareasComentarios
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE Etiquetas
+CREATE TABLE etiquetas
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
-	,`Etiqueta` VARCHAR(250)  NULL 
-	,`EtiquetaPadre_id` INT  NULL 
+	,`etiqueta` VARCHAR(250)  NULL 
+	,`etiquetaPadre_id` INT  NULL 
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE Tarea_Etiqueta
+CREATE TABLE tarea_Etiqueta
 (
-	`Tarea_id` INT NOT NULL 
-	,`Etiqueta_id` INT NOT NULL 
+	`tarea_id` INT NOT NULL 
+	,`etiqueta_id` INT NOT NULL 
 	,`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE Contrasenias
+CREATE TABLE contrasenias
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
@@ -210,59 +210,34 @@ CREATE TABLE Contrasenias
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE Proyectos ADD FOREIGN KEY (proyectoPadre_id) REFERENCES Proyectos(id);
-
+ALTER TABLE proyectos ADD FOREIGN KEY (proyectoPadre_id) REFERENCES proyectos(id);
 ALTER TABLE imagenes ADD FOREIGN KEY (comentario_id) REFERENCES comentarios(id);
-
 ALTER TABLE adjuntos ADD FOREIGN KEY (comentario_id) REFERENCES comentarios(id);
-
 ALTER TABLE comentario_rolHabilitado ADD FOREIGN KEY (comentario_id) REFERENCES comentarios(id);
-
 ALTER TABLE comentario_usuarioHabilitado ADD FOREIGN KEY (comentario_id) REFERENCES comentarios(id);
-
 ALTER TABLE rol_usuario ADD FOREIGN KEY (rol_id) REFERENCES roles(id);
-
-ALTER TABLE rol_usuario ADD FOREIGN KEY (usuario_id) REFERENCES Usuarios(id);
-
-ALTER TABLE comentarios ADD FOREIGN KEY (autor_id) REFERENCES Usuarios(id);
-
+ALTER TABLE rol_usuario ADD FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+ALTER TABLE comentarios ADD FOREIGN KEY (autor_id) REFERENCES usuarios(id);
 ALTER TABLE comentario_rolHabilitado ADD FOREIGN KEY (rolHabilitado_id) REFERENCES roles(id);
-
-ALTER TABLE comentario_usuarioHabilitado ADD FOREIGN KEY (usuarioHabilitado_id) REFERENCES Usuarios(id);
-
-ALTER TABLE comentarios ADD FOREIGN KEY (poyecto_id) REFERENCES Proyectos(id);
-
-ALTER TABLE Tareas ADD FOREIGN KEY (usuarioCreador_id) REFERENCES Usuarios(id);
-
-ALTER TABLE Fechas ADD FOREIGN KEY (Tarea_id) REFERENCES Tareas(id);
-
-ALTER TABLE Georeferencia ADD FOREIGN KEY (tarea_id) REFERENCES Tareas(id);
-
--- ALTER TABLE Lugares ADD FOREIGN KEY (id) REFERENCES Georeferencia(lugar_id); -- no siempre se relacione con un lugar
-
-ALTER TABLE Auditoria ADD FOREIGN KEY (Tarea_id) REFERENCES Tareas(id);
-
-ALTER TABLE Asignaciones ADD FOREIGN KEY (tarea_id) REFERENCES Auditoria(Tarea_id);
-
-ALTER TABLE Asignaciones ADD FOREIGN KEY (usuarioAsignado_id) REFERENCES Usuarios(id);
-
-ALTER TABLE TareasComentarios ADD FOREIGN KEY (tarea_id) REFERENCES Tareas(id);
-
-ALTER TABLE TareasComentarios ADD FOREIGN KEY (comentarioComentado_id) REFERENCES TareasComentarios(id);
-
-ALTER TABLE TareasComentarios ADD FOREIGN KEY (usuario_id) REFERENCES Usuarios(id);
-
-ALTER TABLE Tarea_Etiqueta ADD FOREIGN KEY (Tarea_id) REFERENCES Tareas(id);
-
-ALTER TABLE Etiquetas ADD FOREIGN KEY (EtiquetaPadre_id) REFERENCES Etiquetas(id);
-
-ALTER TABLE Contrasenias ADD FOREIGN KEY (usuario_id) REFERENCES Usuarios(id);
+ALTER TABLE comentario_usuarioHabilitado ADD FOREIGN KEY (usuarioHabilitado_id) REFERENCES usuarios(id);
+ALTER TABLE comentarios ADD FOREIGN KEY (poyecto_id) REFERENCES proyectos(id);
+ALTER TABLE tareas ADD FOREIGN KEY (usuarioCreador_id) REFERENCES usuarios(id);
+ALTER TABLE fechas ADD FOREIGN KEY (tarea_id) REFERENCES Tareas(id);
+ALTER TABLE georeferencia ADD FOREIGN KEY (tarea_id) REFERENCES tareas(id);
+ALTER TABLE auditoria ADD FOREIGN KEY (tarea_id) REFERENCES tareas(id);
+ALTER TABLE asignaciones ADD FOREIGN KEY (tarea_id) REFERENCES auditoria(tarea_id);
+ALTER TABLE asignaciones ADD FOREIGN KEY (usuarioAsignado_id) REFERENCES usuarios(id);
+ALTER TABLE tareasComentarios ADD FOREIGN KEY (tarea_id) REFERENCES tareas(id);
+ALTER TABLE tareasComentarios ADD FOREIGN KEY (comentarioComentado_id) REFERENCES tareasComentarios(id);
+ALTER TABLE tareasComentarios ADD FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+ALTER TABLE tarea_Etiqueta ADD FOREIGN KEY (tarea_id) REFERENCES tareas(id);
+ALTER TABLE etiquetas ADD FOREIGN KEY (etiquetaPadre_id) REFERENCES etiquetas(id);
+ALTER TABLE contrasenias ADD FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+ALTER TABLE tarea_Etiqueta ADD FOREIGN KEY (etiqueta_id) REFERENCES etiquetas(id);
 
 -- ALTER TABLE Listas ADD FOREIGN KEY (id) REFERENCES Tareas(Lista_id); -- nose porque no anda
-
-ALTER TABLE Tarea_Etiqueta ADD FOREIGN KEY (Etiqueta_id) REFERENCES Etiquetas(id);
-
+-- ALTER TABLE Lugares ADD FOREIGN KEY (id) REFERENCES Georeferencia(lugar_id); -- no siempre se relacione con un lugar
 
 INSERT INTO roles (rol) VALUES ('Administrador');
 INSERT INTO usuarios (usuario) VALUES ('adminU');
-INSERT INTO contrasenias (contrasenia,usuario_id) VALUES ('adminC',1);
+INSERT INTO contrasenias (clave,usuario_id) VALUES ('c792940730693ab15e258c4e253b2e767b1b57a0',1);
