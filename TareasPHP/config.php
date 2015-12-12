@@ -6,7 +6,7 @@ define("SQL_DB","tareas");
 
 define("URL_LOGIN","login.php");
 define("DIR_LIBRERIAS","scripts/");
-define("DIR_FOTOPERFIL","../upload/");
+define("DIR_FOTOPERFIL","fotoPerfil/");
 
 define("NOMBRE_SITIO","tareas");
 define("ESTILO_SITIO","estilo1");

@@ -80,26 +80,28 @@ function guardarUsuario()
 	
 	 
 	$insert_row = $connection->query($sqlInsert);
-	
 	$resultado=false;
-	
+
 	if($insert_row){
+		echo "guardando_guardo usuario"."<br/>";
 		$idNuevoUsuario=$connection->insert_id;
 		
 		$sqlInsert='INSERT INTO contrasenias (clave,usuario_id) VALUES';
 		$sqlInsert.='('.$usuarioClave.','.$idNuevoUsuario.')';
 		$insert_row = $connection->query($sqlInsert);
 		if($insert_row){
-			$resultado=true;} 
+			$resultado=true;
+		} 
 		
 	}
-	
-	if ($resultado=false)
+
+	if ($resultado==false)
 		{die('Error : ('. $connection->errno .') '. $connection->error);}
 	
 	//mysqli_query($connection, $sqlInsert);
 	//mysqli_close($connection);
 	$connection->close();
+
 	return $resultado;
 
 }

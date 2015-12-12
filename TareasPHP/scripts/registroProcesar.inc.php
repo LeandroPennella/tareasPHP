@@ -12,9 +12,12 @@ $claseError="error";
 
 if (isset($_POST['enviarFormulario']))//segunda pasada
 {
+
 //	$primeraPasada=false;
 	//session_unset("registro");  
 	$respuestaRegistro=validarRegistro();
+	//echo "respuestaRegistro:".$respuestaRegistro."<br/>";
+	//break;
 	if (isset($_SESSION["registro"]["modo"])&&$_SESSION["registro"]["modo"]=="modificar")
 	{
 		if(modificarUsuario())
@@ -31,11 +34,21 @@ if (isset($_POST['enviarFormulario']))//segunda pasada
 	
 	if($respuestaRegistro=="ok")
 	{
+		//echo "guardando"."<br/>";
+		//break;
+		
+		procesarImagen(DIR_FOTOPERFIL.$fotoNueva);
 		if(guardarUsuario())
 		{
+			//echo "guardo"."<br/>";
 			$_SESSION['notificaciones']="Registro completado correctamente";
 			header('Location: ../index.php');
-		}				
+		}
+		else{
+			//TODO: mostrar error
+			$_SESSION['notificaciones']="error al guardar el registro";
+			//echo "no guardo"."<br/>";
+		}
 	}
 	else
 	{

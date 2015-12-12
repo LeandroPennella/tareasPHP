@@ -105,7 +105,7 @@
 			<?php } ?>
 			
 			<label>Foto</label>
-			<input type="file" name="fotoArchivo" ><br>
+			<input type="file" name="fotoNueva" accept="image/*" ><br>
 			
 			<input type="submit" name="enviarFormulario" value="Enviar"/>
 			</div>

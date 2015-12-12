@@ -4,7 +4,7 @@
 //validar;
 function validarRegistro()
 {
-	//$fotoValida=$_POST["fotoArchivo"]!="";//||($_POST["nombreFotoNueva"]!="")); //TODO: tiene que validar?
+	//$fotoValida=$_POST["fotoNueva"]!="";//||($_POST["fotoNueva"]!="")); //TODO: validar?
 	$usuarioValido=$_POST["usuario"]!="";//(preg_match('/[^a-Z]/',$_POST["nombre"]));
 	$nombreValido=$_POST["nombre"]!=""&&solo_letras($_POST["nombre"]);//(preg_match('/[^a-Z]/',$_POST["nombre"]));
 	$apellidoValido=$_POST["apellido"]&&solo_letras($_POST["apellido"]);//preg_match('/[^a-Z]/',$_POST["apellido"]));
