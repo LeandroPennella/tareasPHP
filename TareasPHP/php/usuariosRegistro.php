@@ -17,13 +17,13 @@
 	
 	<h1>Formulario de Registro</h1>
 	
-		<form action="usuariosRegistro.php" method="post" enctype="multipart/form-data">
-			<input type="file" id="file" name="file" accept="image/*" ><br>
+		<form style="float: right;" action="usuariosRegistro.php" method="post" enctype="multipart/form-data">
+			<input type="file" id="file" name="file" accept="image/*" >
 			<input type="submit" name="submitImagen" value="Submit">
 		</form>
 		
 		<form action="usuariosRegistro.php" method="post" enctype="multipart/form-data">
-		<div>	
+		<div style="float: right;">	
 		<?php
 		
 		if (isset($_POST['submitImagen']))
@@ -41,13 +41,13 @@
 		
 		<?php 
 		} else { ?>
-			<input type="file" id="file" name="file" accept="image/*" ><br>
+			<!--  <input type="file" id="file" name="file" accept="image/*" ><br>-->
 		<?php 
 		} 
 		
 		?>	
 		</div>
-		<div>
+		<div style="float: left;">
 				
 
 			<label>Usuario</label>
@@ -106,10 +106,10 @@
 			<br/>
 			
 			<?php } ?>
-			
+			<!-- 
 			<label>Foto</label>
 			<input type="file" name="fotoNueva" accept="image/*" ><br>
-			
+			 -->
 			<input type="submit" name="enviarFormulario" value="Enviar"/>
 			</div>
 		</form>

@@ -34,7 +34,7 @@ function validarRegistro()
 
 function solo_letras($cadena)
 { 
-	$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZñÑáéíóúÁÉÍÓÚ"; 
+	$permitidos = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZñÑáéíóúÁÉÍÓÚ"; 
 	for ($i=0; $i<strlen($cadena); $i++)
 	{ 
 		if (strpos($permitidos, substr($cadena,$i,1))===false){return false;} 

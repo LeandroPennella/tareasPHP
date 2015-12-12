@@ -3,7 +3,8 @@
                 
 function procesarImagen($directorioSubida)
 {
-	echo "procesando imagen en"-$directorioSubida."<br/>";
+	echo "procesando imagen en".$directorioSubida."<br/>";
+	//break;
 	$allowedExts = array("gif", "jpeg", "jpg", "png");
 	$temp = explode(".", $_FILES["file"]["name"]);
 	$extension = end($temp);

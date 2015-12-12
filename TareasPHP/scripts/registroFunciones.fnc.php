@@ -46,7 +46,7 @@ function obtenerUsuarioActual()
 	
 	
 	$mail=$_SESSION["usuario"];
-	$connection = getDBparcial();
+	$connection = getDB();
 	$sqlSelect="select * from usuarios where correoElectronico='$mail'";
 	//echo $sqlSelect;
 	
