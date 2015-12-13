@@ -31,8 +31,8 @@ function validarRegistro()
 		if (!$claveCargada){return "Introducir una clave";}
 		if (!$clavesIguales){return "las claves no concuerdan";}
 	}
-	else 		
-	{return "ok";}
+	//else 		
+	return "ok";
 	
 }
 

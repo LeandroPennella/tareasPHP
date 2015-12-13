@@ -9,8 +9,9 @@ if (isset($_POST['enviarFormulario'])) // se completo el formulario
 {
 	$respuestaRegistro=validarRegistro();
 	
-	
 	if($respuestaRegistro=="ok") {
+		
+		
 		if(guardarUsuario()) {
 			$_SESSION['notificaciones']="Registro completado correctamente";
 			header('Location: ../index.php');
