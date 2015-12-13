@@ -4,13 +4,30 @@ require_once "registroFunciones.fnc.php";
 require_once "registroValidar.fnc.php";
 
 
-
-if (!isset($_POST['enviarFormulario']))	//cargdo con datos originales
+if (!isset($_POST['enviarFormulario']))	//vacio
 {
-	$usuario=obtenerUsuario($_GET['id']);
 
+	if (isset($_GET["id"]))
 	
-	$_POST["id"]=$_GET['id'];
+	{
+
+		if (esAdministrador()==true)
+		{	
+
+			$usuario=obtenerUsuario($_GET['id']);
+			$_POST["id"]=$_GET['id'];
+		} else  {
+
+			$_SESSION["mensaje"]="no esta autorizado";
+			header('Location: ../index.php');
+
+		}
+		
+	}
+	else
+	{$usuario=obtenerUsuarioActual();}
+	
+	$_POST["id"]=$usuario->id;
 	$_POST["usuario"]=$usuario->usuario;
 	$_POST["nombre"]=$usuario->nombre;
 	$_POST["apellido"]=$usuario->apellido;

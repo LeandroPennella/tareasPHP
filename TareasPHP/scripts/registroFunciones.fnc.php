@@ -71,13 +71,13 @@ function obtenerUsuarioActual()
 {
 	
 	
-	$mail=$_SESSION["usuario"];
+	$usuario=$_SESSION["usuario"];
 	$connection = getDB();
-	$sqlSelect="select * from usuarios where correoElectronico='$mail'";
+	$sqlSelect="select * from usuarios where usuario='$usuario'";
 	//echo $sqlSelect;
 	
 	if($result = $connection->query($sqlSelect))
-	{return $result->fetch_object();}
+	{return $result->fetch_object();} else {return "error:".$connection->error;}
 	$connection->close;
 	
 }

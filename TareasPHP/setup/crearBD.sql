@@ -240,3 +240,4 @@ ALTER TABLE tarea_Etiqueta ADD FOREIGN KEY (etiqueta_id) REFERENCES etiquetas(id
 INSERT INTO roles (rol) VALUES ('Administrador');
 INSERT INTO usuarios (usuario) VALUES ('adminU');
 INSERT INTO contrasenias (clave,usuario_id) VALUES ('c792940730693ab15e258c4e253b2e767b1b57a0',1);
+INSERT INTO rol_usuario(rol_id,usuario_id) VALUE (1,1)

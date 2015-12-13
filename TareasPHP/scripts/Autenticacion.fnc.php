@@ -19,4 +19,22 @@ function comprobarAcceso()
 		header('Location: http://'.RAIZ_URL.'/php/usuariosLogin.php');
 	}
 }
+
+function esAdministrador()
+{
+	$usuario=$_SESSION["usuario"];
+	$sql="SELECT distinct 1 FROM usuarios  u
+	inner join rol_usuario ru on u.id=ru.usuario_id
+	inner join roles r on r.id=ru.rol_id
+	where r.rol='Administrador'";
+
+	$mysqli = new mysqli(SQL_HOST,SQL_US,SQL_PW,SQL_DB);
+	if (mysqli_connect_error()) {die('Error de Conexión (' . mysqli_connect_errno() . ') '. mysqli_connect_error());}
+	if (sql_contarRegistros($mysqli, $sql)==1)
+	{return true;}
+	else {
+	return false;}
+	$mysqli->close();
+	unset($sql);
+}
 ?>

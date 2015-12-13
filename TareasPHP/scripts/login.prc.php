@@ -43,7 +43,7 @@ where u.usuario=$usuario and c.clave=$clave";
 //echo "accion: ".$_GET["accionLogin"];
 //echo "<br/>";
 
-echo $sql;
+
 
 if (sql_contarRegistros($mysqli, $sql)==1)
 {
