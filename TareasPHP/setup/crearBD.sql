@@ -1,15 +1,34 @@
+DROP DATABASE tareas;
+
 CREATE SCHEMA IF NOT EXISTS `tareas`;
+
+GRANT ALL PRIVILEGES ON tareas.* TO 'usuarioBD'@'localhost';
 
 USE `tareas`;
 
 
+CREATE TABLE usuarios
+(
+	`id` INT NOT NULL AUTO_INCREMENT
+	,PRIMARY KEY (id)
+	,`usuario` VARCHAR(250)  NULL 
+	,`foto` VARCHAR(250)  NULL 
+	,`nombre` VARCHAR(250)  NULL 
+	,`apellido` VARCHAR(250)  NULL
+	,`fechaNacimiento` DATE  NULL
+	,`correoElectronico` VARCHAR(250)  NULL 
+)
+ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- ==============================================================================
--- ==
--- == Tablas
--- ==
--- ==============================================================================
 
+CREATE TABLE contrasenias
+(
+	`id` INT NOT NULL AUTO_INCREMENT
+	,PRIMARY KEY (id)
+	,`clave` VARCHAR(50) NOT NULL 
+	,`usuario_id` INT NOT NULL 
+)
+ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE lugares
 (
@@ -130,19 +149,6 @@ CREATE TABLE proyectos
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE usuarios
-(
-	`id` INT NOT NULL AUTO_INCREMENT
-	,PRIMARY KEY (id)
-	,`Usuario` VARCHAR(250)  NULL 
-	,`foto` VARCHAR(250)  NULL 
-	,`nombre` VARCHAR(250)  NULL 
-	,`apellido` VARCHAR(250)  NULL
-	,`fechaNacimiento` DATE  NULL
-	,`correoElectronico` VARCHAR(250)  NULL 
-)
-ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 CREATE TABLE roles
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -201,14 +207,7 @@ CREATE TABLE tarea_Etiqueta
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE contrasenias
-(
-	`id` INT NOT NULL AUTO_INCREMENT
-	,PRIMARY KEY (id)
-	,`clave` VARCHAR(50) NOT NULL 
-	,`usuario_id` INT NOT NULL 
-)
-ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 ALTER TABLE proyectos ADD FOREIGN KEY (proyectoPadre_id) REFERENCES proyectos(id);
 ALTER TABLE imagenes ADD FOREIGN KEY (comentario_id) REFERENCES comentarios(id);

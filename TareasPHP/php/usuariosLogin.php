@@ -47,7 +47,7 @@ if (!isset($_SESSION["login"])||($_SESSION["login"]!="true"))//no esta logueado
 					<a class="boton" href="javascript:{}" onclick="document.getElementById('loginForm').submit();">Ingresar</a> 
 				</form>
 				
-				<a  href="usuariosRegistro.php">Registrarse</a>
+				<a  href="usuariosRegistroCrear.php">Registrarse</a>
 
 			</div>
 		</body>

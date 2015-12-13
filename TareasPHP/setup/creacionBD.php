@@ -4,6 +4,29 @@
 $SQLCrearTablasBD="
 
 
+CREATE TABLE usuarios
+(
+	`id` INT NOT NULL AUTO_INCREMENT
+	,PRIMARY KEY (id)
+	,`usuario` VARCHAR(250)  NULL 
+	,`foto` VARCHAR(250)  NULL 
+	,`nombre` VARCHAR(250)  NULL 
+	,`apellido` VARCHAR(250)  NULL
+	,`fechaNacimiento` DATE  NULL
+	,`correoElectronico` VARCHAR(250)  NULL 
+)
+ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE contrasenias
+(
+	`id` INT NOT NULL AUTO_INCREMENT
+	,PRIMARY KEY (id)
+	,`clave` VARCHAR(50) NOT NULL 
+	,`usuario_id` INT NOT NULL 
+)
+ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 CREATE TABLE lugares
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -123,19 +146,6 @@ CREATE TABLE proyectos
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE usuarios
-(
-	`id` INT NOT NULL AUTO_INCREMENT
-	,PRIMARY KEY (id)
-	,`Usuario` VARCHAR(250)  NULL 
-	,`foto` VARCHAR(250)  NULL 
-	,`nombre` VARCHAR(250)  NULL 
-	,`apellido` VARCHAR(250)  NULL
-	,`fechaNacimiento` DATE  NULL
-	,`correoElectronico` VARCHAR(250)  NULL 
-)
-ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 CREATE TABLE roles
 (
 	`id` INT NOT NULL AUTO_INCREMENT
@@ -191,15 +201,6 @@ CREATE TABLE tarea_Etiqueta
 	,`etiqueta_id` INT NOT NULL 
 	,`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
-)
-ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE contrasenias
-(
-	`id` INT NOT NULL AUTO_INCREMENT
-	,PRIMARY KEY (id)
-	,`clave` VARCHAR(50) NOT NULL 
-	,`usuario_id` INT NOT NULL 
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 		

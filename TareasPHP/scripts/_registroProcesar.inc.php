@@ -1,5 +1,5 @@
 <?php
-
+/*
 require_once '../config.php';
 require_once "registroProcesarImagen.fnc.php";
 require_once "registroFunciones.fnc.php";
@@ -80,5 +80,5 @@ else
 		
 	}
 }
-
+*/
 ?>

@@ -11,8 +11,10 @@ function validarRegistro()
 	$mailValido=filter_var($_POST["eMail"], FILTER_VALIDATE_EMAIL);
 	$fechaCargada=($_POST["mes"]>0&&$_POST["mes"]<13&&$_POST["dia"]>0&&$_POST["dia"]<31&&$_POST["anio"]>0);
 	$fechaValida=($fechaCargada&&checkdate($_POST["mes"], $_POST["dia"], $_POST["anio"]));
-	$claveCargada=($_POST["clave"]!="");
-	$clavesIguales=($_POST["clave"]==$_POST["repetirClave"]);
+	if(!isset($_POST['id'])){ //si no es modificacion
+		$claveCargada=($_POST["clave"]!="");
+		$clavesIguales=($_POST["clave"]==$_POST["repetirClave"]);
+	}
 	
 	/*
 		$error["tipo"]="fecha";
@@ -25,8 +27,10 @@ function validarRegistro()
 	if (!$mailValido){return "Introducir un mail valido";}
 	if (!$fechaCargada){return "Introducir una fecha de nacimiento ";}
 	if (!$fechaValida){return "Introducir una fecha de nacimiento valida";}
-	if (!$claveCargada){return "Introducir una clave";}
-	if (!$clavesIguales){return "las claves no concuerdan";}
+	if(!isset($_POST['id'])){ //si no es modificacion
+		if (!$claveCargada){return "Introducir una clave";}
+		if (!$clavesIguales){return "las claves no concuerdan";}
+	}
 	else 		
 	{return "ok";}
 	

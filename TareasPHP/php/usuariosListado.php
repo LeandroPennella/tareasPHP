@@ -34,9 +34,9 @@
 	    while($obj = $result->fetch_object())
 	    { 
 	    	echo "<tr>";
-	    	echo "<td><a href='registroModificar.php?id=".$obj->id."'>".$obj->id."</a></td>";
-	    	echo "<td><img src="."../upload/".$obj->foto." /></td>";
-	        echo "<td>".$obj->Usuario."</td>";
+	    	echo "<td><a href='usuariosRegistroModificar.php?id=".$obj->id."'>".$obj->id."</a></td>";
+	    	echo "<td><img src=".DIR_FOTOPERFIL.$obj->foto." /></td>";
+	        echo "<td>".$obj->usuario."</td>";
 	        echo "<td>".$obj->nombre."</td>";
 	        echo "<td>".$obj->apellido."</td>";
 	        echo "<td>".$obj->fechaNacimiento."</td>";
