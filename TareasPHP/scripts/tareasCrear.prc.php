@@ -22,7 +22,7 @@ if (isset($_POST['submitTarea']))
 
 function validarTarea()
 {
-	if (!isset($_POST["tituloTarea"]))
+	if (!(isset($_POST["tituloTarea"])&&$_POST["tituloTarea"]!=""))
 	{return "Debe escribir el titulo de la tarea";}
 	if (!isset($_POST["publico"]))
 	{
