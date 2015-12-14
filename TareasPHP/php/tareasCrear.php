@@ -3,6 +3,7 @@
 	require_once '../scripts/tareasCrear.prc.php';
 	//session_start();
 	
+	
 	//comprobarAcceso();
 	$db=getDB();
 	$sql="select * from usuarios";
@@ -36,7 +37,7 @@
 			    			<tr>
 						    	<th scope='col'>publico</th>
 						    	</tr></thead><tr><td>
-									<input type="checkbox" name="publico" value="true"> publico
+									<input type="checkbox" name="publico" <?php echo isset($_POST["publico"])?"checked":"";?>> publico
 								</tr>
 							</tr>
 					</table>

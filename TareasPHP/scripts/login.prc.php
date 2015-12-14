@@ -49,6 +49,7 @@ if (sql_contarRegistros($mysqli, $sql)==1)
 {
 	$_SESSION["login"]="true";
 	$_SESSION["usuario"]=$_POST["usuario"];
+	$_SESSION["idUsuario"]=$_POST["id"];
 	$_SESSION["loginError"]="false";
 	//$_SESSION["login"]["Error"]="false";
 }

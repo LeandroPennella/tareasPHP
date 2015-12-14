@@ -2,7 +2,8 @@
  
 
 function mostrarHeader($tituloPagina)
-{?>
+{
+comprobarAcceso();?>
 <header>
 	<a href="menu.php"><</a>
 	<div ><?php echo NOMBRE_SITIO .">". $tituloPagina?></div>

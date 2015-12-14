@@ -1,11 +1,10 @@
 <?php
+require_once 'tareasCrear.sql.php';
 if (isset($_POST['submitTarea']))
 {
-	//session_start();
-	$esPublico=false;
+
 	if (isset($_POST['idUsuario'])){$idUsuario = $_POST['idUsuario'];}
-	//if (isset($_POST["publico"]) &&$_POST["publico"]==true){$esPublico=true;}
-//	if (isset($_POST["tituloTarea"])){$tituloTarea=$_POST["tituloTarea"];}
+
 		
 	$resultadoValidacion=validarTarea();
 	if($resultadoValidacion!="ok") //>validar
@@ -33,24 +32,7 @@ function validarTarea()
 	}
 }
 
-function guardarTarea()
-{
-	echo "tarea :$tituloTarea<br/>";
-	$N = count($idUsuario);
-	if (isset($_POST["publico"]))
-	{
-		echo("es publico<br/>");
-	}
-	else {
-		echo("usuarios seleccionados: $N <br/>");
-		for($i=0; $i < $N; $i++)
-		{
-			echo("usuario:".$idUsuario[$i] . " ");
-		}
-	}
-	break;
-	
-}
+
 
 function imprimirPOST($variable) {
 

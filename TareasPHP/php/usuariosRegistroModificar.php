@@ -1,6 +1,7 @@
 
 <?php
 require_once "../config.php";
+
 require_once '../scripts/registroFunciones.fnc.php';
 //require_once '../scripts/registroProcesarImagen.fnc.php';
 
