@@ -35,9 +35,8 @@
 			    		<thead>
 			    			<tr>
 						    	<th scope='col'>incluir</th>
-						    	<th scope='col'>Foto</th>
-						    	<th scope='col'>Usuario</th>
-						    	<th scope='col'>Mail</th>
+						    	<th scope='col'>usuario</th>
+
 					    	</tr>
 				    	</thead>
 				    	<tbody>
@@ -46,14 +45,14 @@
 					    { 
 					    	echo "<tr>";
 					    	echo "<td><input type='checkbox' name='idUsuario[]' value='".$obj->id."'></td>\n";
-					    	echo "<td><img src="."../upload/".$obj->foto." /></td>";
-					        echo "<td>".$obj->Usuario."</td>";
-					        echo "<td>".$obj->mail."</td>";
+					    	
+					        echo "<td>".$obj->usuario."</td>";
+
 					        echo "</tr>";
 					    } 
 				    }
-					//$db->close;
-				    mysqli_close($db);
+					$db->close();
+				    
 					?>
 				    </tr></tbody></table>
 				</td>
