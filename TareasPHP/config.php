@@ -8,8 +8,8 @@ define("URL_LOGIN","login.php");
 define("DIR_LIBRERIAS","scripts/");
 define("DIR_FOTOPERFIL","../fotoPerfil/");
 
-define("NOMBRE_SITIO","sitioDetareas");
-define("ESTILO_SITIO","estilo2");
+define("NOMBRE_SITIO","tareas");
+define("ESTILO_SITIO","estilo1");
 		
 setlocale(LC_TIME, "spanish");  
 	

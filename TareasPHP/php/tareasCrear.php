@@ -1,10 +1,11 @@
 <?php
 	require_once "../config.php"; 
+	require_once '../scripts/tareasCrear.prc.php';
 	//session_start();
 	
 	//comprobarAcceso();
 	$db=getDB();
-	$sql="select * from Usuarios";
+	$sql="select * from usuarios";
     if ($result = $db->query($sql)) 
     { 
 ?>
@@ -14,23 +15,32 @@
 	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/listado.css">
 </head>
 <body>
+<?php mostrarHeader("Menu");?>
 	<?php
-	if (isset($_SESSION["mensajeError"])){
+	if (isset($mensajeError)){
 		?>
-		<div class="error">
-		<?php echo $_SESSION["mensajeError"] ?>
-		</div>
+		<div class="error"><?php echo $mensajeError ?></div>
 		<?php 
 	}
 	?>
-	<form action="../scripts/prc.tareasCrear.php" method="post">
+	<form action="tareasCrear.php" method="post">
 		<table>
 			<tr>
 				<td>
 				<label for="Tarea">Tarea</label>
-				<input type="text" name="tarea" /><br/>
+				<input type="text" name="tituloTarea" value="<?=imprimirPOST("tituloTarea")?>"/><br/>
 				</td>
 				<td>
+					<table id='box-table-a' summary='publico'>
+						<thead>
+			    			<tr>
+						    	<th scope='col'>publico</th>
+						    	</tr></thead><tr><td>
+									<input type="checkbox" name="publico" value="true"> publico
+								</tr>
+							</tr>
+					</table>
+					
 					<table id='box-table-a' summary='Usuarios'>
 			    		<thead>
 			    			<tr>
@@ -45,9 +55,7 @@
 					    { 
 					    	echo "<tr>";
 					    	echo "<td><input type='checkbox' name='idUsuario[]' value='".$obj->id."'></td>\n";
-					    	
 					        echo "<td>".$obj->usuario."</td>";
-
 					        echo "</tr>";
 					    } 
 				    }
@@ -58,7 +66,7 @@
 				</td>
 			</tr>
 		</table>
-  		<p><input type="submit" /></p>   
+  		<p><input type="submit" name="submitTarea" /></p>   
 	</form>
 	</body>
 </html>
