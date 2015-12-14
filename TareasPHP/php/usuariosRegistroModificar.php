@@ -18,6 +18,7 @@ require_once '../scripts/registroModificar.inc.php';
 	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/paneles.css">
 </head>
 <body>
+	<?php mostrarHeader("Modificar Registro");?>
 <div class="panel panelRegistro">
 
 	<?php 

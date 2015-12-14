@@ -7,7 +7,7 @@ define(\"SQL_DB\",\"$nombreBD\");
 
 define(\"URL_LOGIN\",\"login.php\");
 define(\"DIR_LIBRERIAS\",\"scripts/\");
-define(\"DIR_FOTOPERFIL\",\"../upload/\");
+define(\"DIR_FOTOPERFIL\",\"../fotoPerfil/\");
 
 define(\"NOMBRE_SITIO\",\"$nombreSitio\");
 define(\"ESTILO_SITIO\",\"$estiloSitio\");
