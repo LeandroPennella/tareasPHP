@@ -15,7 +15,10 @@ function getDB()
     static $db;
 
     if (!$db) {
-        $db =  new mysqli(SQL_HOST,SQL_US,SQL_PW,SQL_DB);	
+        $db =  new mysqli(SQL_HOST,SQL_US,SQL_PW,SQL_DB);
+        if ($db->connect_error) {
+        	die('Error de conexión: ' . $db->connect_error);
+        }
     }
 
     return $db;
@@ -23,7 +26,7 @@ function getDB()
 
 function SQLExecQuery($query)
 {
-    $db =  new mysqli(SQL_HOST,SQL_US,SQL_PW,SQL_DB);	
+    $db =  getDB();
     return $db->query($sql);
 }
 

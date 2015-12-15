@@ -1,12 +1,17 @@
 <?php
-require_once 'tareasCrear.sql.php';
+require_once 'sql.tareas.php';
+require_once '../scripts/sql.usuarios.php';
+$usuarios = obtenerUsuarios();
+
 if (isset($_POST['submitTarea']))
 {
+	if (isset($_POST['idsUsuarios'])){$idsUsuarios = $_POST['idsUsuarios'];}
 
-	if (isset($_POST['idUsuario'])){$idUsuario = $_POST['idUsuario'];}
 
-		
+
+	
 	$resultadoValidacion=validarTarea();
+
 	if($resultadoValidacion!="ok") //>validar
 	{
 		$mensajeError=$resultadoValidacion;
@@ -14,22 +19,26 @@ if (isset($_POST['submitTarea']))
 	else
 	{
 		guardarTarea();
-	  	header("Location: ../php/tareasCrear.php");
-		die();
+	  	//header("Location: ../php/tareasListar.php");
+		//die();
 	}
 }
 
 function validarTarea()
 {
+
 	if (!(isset($_POST["tituloTarea"])&&$_POST["tituloTarea"]!=""))
-	{return "Debe escribir el titulo de la tarea";}
+	{
+		return "Debe escribir el titulo de la tarea";
+	}
 	if (!isset($_POST["publico"]))
 	{
-		if(empty($idUsuario)) //>validar
+		if(!isset($_POST['idsUsuarios'])) //>validar
 		{
 			return "Debe seleccionar al menos un usuario";
 		}
 	}
+	return 'ok';
 }
 
 

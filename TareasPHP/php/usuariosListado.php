@@ -1,18 +1,14 @@
-<?php
-	session_start();
-	require_once "../config.php"; ?>
+<?php require_once "../config.php"; ?>
 
 <html>
-	<head>
-			<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/sitio.css">
-			<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/listado.css">
-	</head>
-		<body>
-			
-
+<head>
+	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/sitio.css">
+	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/listado.css">
+</head>
+<body>
 <?php
 	mostrarHeader("Listado Usuarios");
-	?><a href="menu.php">< Menu</a><?php
+	
 	comprobarAcceso();
 	$db=getDB();
 	$sql="select * from Usuarios";

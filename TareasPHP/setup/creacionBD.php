@@ -3,7 +3,14 @@
   
 $SQLCrearTablasBD="
 
+DROP DATABASE IF EXISTS tareas;
 
+CREATE SCHEMA IF NOT EXISTS `tareas`;
+
+GRANT ALL PRIVILEGES ON tareas.* TO 'usuarioBD'@'localhost';
+
+USE `tareas`;
+		
 CREATE TABLE usuarios
 (
 	`id` INT NOT NULL AUTO_INCREMENT

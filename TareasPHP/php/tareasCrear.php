@@ -1,14 +1,6 @@
 <?php
 	require_once "../config.php"; 
 	require_once '../scripts/tareasCrear.prc.php';
-	//session_start();
-	
-	
-	//comprobarAcceso();
-	$db=getDB();
-	$sql="select * from usuarios";
-    if ($result = $db->query($sql)) 
-    { 
 ?>
 <html>
 <head>
@@ -28,10 +20,11 @@
 		<table>
 			<tr>
 				<td>
-				<label for="Tarea">Tarea</label>
-				<input type="text" name="tituloTarea" value="<?=imprimirPOST("tituloTarea")?>"/><br/>
+					<label for="Tarea">Tarea</label>
+					<input type="text" name="tituloTarea" value="<?=imprimirPOST("tituloTarea")?>"/><br/>
 				</td>
 				<td>
+					<!-- Tarea Publica -->
 					<table id='box-table-a' summary='publico'>
 						<thead>
 			    			<tr>
@@ -42,6 +35,7 @@
 							</tr>
 					</table>
 					
+					<!-- Tarea Privada > Usuarios-->
 					<table id='box-table-a' summary='Usuarios'>
 			    		<thead>
 			    			<tr>
@@ -52,17 +46,15 @@
 				    	</thead>
 				    	<tbody>
 				    	<?php
-					    while($obj = $result->fetch_object())
+					    while($usuario = $usuarios->fetch_object())
 					    { 
 					    	echo "<tr>";
-					    	echo "<td><input type='checkbox' name='idUsuario[]' value='".$obj->id."'></td>\n";
-					        echo "<td>".$obj->usuario."</td>";
+					    	echo "<td><input type='checkbox' name='idsUsuarios[]' value='".$usuario->id."'></td>\n";
+					        echo "<td>".$usuario->usuario."</td>";
 					        echo "</tr>";
 					    } 
-				    }
-					$db->close();
 				    
-					?>
+						?>
 				    </tr></tbody></table>
 				</td>
 			</tr>

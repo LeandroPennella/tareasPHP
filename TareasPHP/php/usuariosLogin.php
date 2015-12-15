@@ -65,7 +65,7 @@ else // esta logueado
 	}
 	else
 	{
-		header('Location: menu.php');
+		header('Location: ../index.php');
 	}
 
 }

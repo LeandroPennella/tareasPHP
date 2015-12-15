@@ -8,6 +8,6 @@ if(!file_exists (  "config.php" ))
 else 
 {// existe
 //echo "s".isset($_SESSION);
-	header("Location: php/menu.php");
+	header("Location: php/tareasListar.php");
 	die();
 } ?>
