@@ -24,7 +24,7 @@ require_once DIR_SQL.\"sql.php\";
 require_once DIR_LIBRERIAS.\"Autenticacion.fnc.php\";
 
 		
-\$raiz=\"localhost/TareasPHP\";
-define (\"RAIZ_URL\",\"localhost/TareasPHP\");
+\$raiz=\"localhost/$nombreSitio\";
+define (\"RAIZ_URL\",\"localhost/$nombreSitio\");
 ?>";
 ?>
