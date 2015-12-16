@@ -10,20 +10,31 @@ require_once '../sql/sql.tareas.php';
 <body>
 <?php 
 mostrarHeader("Ver Tarea");
-$tarea=verTarea($_GET['id']);
+$tarea=obtenerTarea($_GET['id']);
 ?>
 <table id='box-table-a' >
 <thead>
-<tr>
-<th colspan="2">Tarea</th>
-</tr>
-<tr>
-<td>Titulo</td>
-<td><?=$tarea->tarea?></td>
-
-</tr>
+	<tr><th colspan="2">Tarea</th></tr>
 </thead>
+<tr>
+	<th>Titulo</th>
+	<td><?=$tarea->tarea?></td>
+</tr>
+<tr>	
+	<th >Usuarios</th>
+	<td>
+	<?php $usuariosTarea=obtenerTareaUsuarios($_GET['id']);
+	if ($usuariosTarea==null)
+	{?>&nbsp;<?php }	else {
+	while($usuario = $usuariosTarea->fetch_object())
+	{?>
+	<?= $usuario->usuario ?><br/>
+		
+	<?php }}?> 
+	</td>
+</tr>
 </table>
 <a href="tareasModificar.php?id=<?=$_GET['id']?>">Modificar</a>
+<a href="tareasCompletar.php?id=<?=$_GET['id']?>">Completar</a>
 </body>
 </html>

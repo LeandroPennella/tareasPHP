@@ -11,7 +11,7 @@ function tareaVisible($idTarea)
 	//TODO:
 }
 
-function verTarea($idTarea)
+function obtenerTarea($idTarea)
 {
 	$conn = getDB();
 	$sql="SELECT * FROM tareas t WHERE id=$idTarea";
@@ -23,6 +23,22 @@ function verTarea($idTarea)
 	{
 		die('Error : ('. $conn->errno .') '. $conn->error);
 	}
+	$conn->close();
+	unset($sql);
+}
+
+
+function obtenerTareaUsuarios($idTarea)
+{
+	$conn = getDB();
+	$sql="
+			SELECT u.usuario 
+			FROM tareas_usuarios tu
+			INNER JOIN usuarios u on u.id=tu.usuario_id
+			WHERE tu.tarea_id=$idTarea";
+	if ($usuariosTarea = $conn->query($sql)) {
+		return $usuariosTarea ;
+	} else{ die('Error : ('. $conn->errno .') '. $conn->error);}
 	$conn->close();
 	unset($sql);
 }
@@ -90,7 +106,7 @@ function listarTareasAdmin()
 
 function guardarTarea()
 {
-	echo "guardando:";
+	
 	$resultado=false;
 	
 	$conn = getDB();
@@ -109,7 +125,12 @@ function guardarTarea()
 		$insert_row = $conn->query($sql);
 		if($insert_row){$resultado=true;} else {die('Error : ('. $conn->errno .') '. $conn->error);}
 	}
-	else
+	/*var_dump($_POST['idsUsuarios'])."<br>";
+	echo isset($_POST['idsUsuarios'])."<br>";
+	echo "e:".empty($_POST['idsUsuarios'])."<br>";
+	die();
+	*/
+	else if (isset($_POST['idsUsuarios']))
 	{
 		$idsUsuarios=$_POST['idsUsuarios'];
 		$N = count($idsUsuarios);

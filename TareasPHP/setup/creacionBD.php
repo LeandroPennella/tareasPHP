@@ -49,7 +49,8 @@ CREATE TABLE tareas
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
-	,`tarea` VARCHAR(250) NOT NULL 
+	,`tarea` VARCHAR(250) NOT NULL
+	,`descripcion` VARCHAR(1000) NULL 
 	,`lista_id` INT NOT NULL 
 	,`prioridad` INT  NULL 
 	,`usuarioCreador_id` INT NOT NULL 

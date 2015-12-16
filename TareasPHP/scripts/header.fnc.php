@@ -33,8 +33,10 @@ else
 	</div>
 </header>
 <ul style="position:fixed; top:20px; left:0px; display:none; background-color: lightGray;" id="menu">
-	<?php if (esAdministrador()){?><li><a href="usuarioslistado.php">Listado</a></li><?php } ?>
-	<li><a href="usuariosRegistroModificar.php">Modificar</a></li>
+	<?php if (esAdministrador()){?>
+	<li><a href="usuarioslistado.php">Listado Usuarios</a></li>
+	<?php } ?>
+	<li><a href="usuariosRegistroModificar.php">Modificar Registro</a></li>
 	<li><a href="tareasCrear.php">Nueva Tarea</a></li>
 	<li><a href="tareaslistar.php">Lista de Tareas</a></li>
 </ul>

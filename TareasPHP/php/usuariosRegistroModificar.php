@@ -1,13 +1,9 @@
 
 <?php
 require_once "../config.php";
-
 require_once '../scripts/registroFunciones.fnc.php';
 //require_once '../scripts/registroProcesarImagen.fnc.php';
-
 require_once '../scripts/registroModificar.inc.php';
-
-
 ?>
 
 
@@ -109,11 +105,17 @@ require_once '../scripts/registroModificar.inc.php';
 			
 			<label>eMail</label>
 			<input type="text" name="eMail" value="<?php imprimirPOST("eMail");?>"/>
-			<br/>	
+			<br/>
+			
+				
+				
 			<?php 
 			if ($_POST['id']!=1){	//no se elimina al admin
 			?>
-			<a href="../scripts/RegistroEliminar.prc.php?id=<?=$_POST['id']?>">Eliminar</a>
+			<label>Habilitado</label>
+			<input type="checkbox" name="habilitado" <?= (isset($_POST["habilitado"])&&($_POST["habilitado"]==1))?"checked":"";?>> 
+			<br/>
+			<!--  <a href="../scripts/RegistroEliminar.prc.php?id=<?=$_POST['id']?>">Eliminar</a> -->
 			<?php
 			}
 			?>
@@ -121,6 +123,7 @@ require_once '../scripts/registroModificar.inc.php';
 			
 			</div>
 		</form>
+		
 	</div>
 <?php 
 //}

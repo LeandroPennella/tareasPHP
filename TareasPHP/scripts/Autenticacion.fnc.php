@@ -20,6 +20,13 @@ function comprobarAcceso()
 	}
 }
 
+function comprobarAccesoAdministrador()
+{
+	if (!(estaLogueado()&&esAdministrador()))
+	{
+		header('Location: http://'.RAIZ_URL.'/php/usuariosLogin.php');
+	}
+}
 function esAdministrador($id=null)
 {
 

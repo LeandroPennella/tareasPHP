@@ -14,7 +14,11 @@ if (isset($_POST['enviarFormulario'])) // se completo el formulario
 		
 		if(guardarUsuario()) {
 			$_SESSION['notificaciones']="Registro completado correctamente";
-			header('Location: ../index.php');
+			if (esAdministrador()) {
+				header('Location: usuariosListado.php');
+			} else {
+				header('Location: ../index.php');
+			}
 		} else {
 			//$_SESSION['notificaciones']="error al guardar el registro";
 			$mensajeError="error al guardar el registro";

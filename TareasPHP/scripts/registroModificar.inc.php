@@ -37,6 +37,7 @@ if (!isset($_POST['enviarFormulario']))	//vacio
 	$_POST["mes"]=$fecha[1];
 	$_POST["anio"]=$fecha[0];
 	$_POST["nombreFoto"]=$usuario->foto;
+	$_POST["habilitado"]=$usuario->habilitado;
 	
 }
 else // se completo el formulario
@@ -48,7 +49,11 @@ else // se completo el formulario
 
 		if(modificarUsuario()) {
 			$_SESSION['notificaciones']="Registro modificado correctamente";
-			header('Location: ../index.php');
+			if (esAdministrador()) {
+				header('Location: usuariosListado.php');
+			} else {
+				header('Location: ../index.php');
+			}
 		} else {
 			//$_SESSION['notificaciones']="error al guardar el registro";
 			$mensajeError="error al guardar el registro";

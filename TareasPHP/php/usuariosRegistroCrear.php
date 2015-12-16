@@ -15,6 +15,11 @@ require_once '../scripts/registroCrear.inc.php';
 	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/paneles.css">
 </head>
 <body>
+<?php
+if (esAdministrador())
+{
+mostrarHeader("Crear Usuario");
+}?>
 <div class="panel panelRegistro">
 
 	<?php if (isset($mensajeError)) { ?>

@@ -19,8 +19,8 @@ if (isset($_POST['submitTarea']))
 	else
 	{
 		guardarTarea();
-	  	//header("Location: ../php/tareasListar.php");
-		//die();
+	  	header("Location: ../php/tareasListar.php");
+		die();
 	}
 }
 

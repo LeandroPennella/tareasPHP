@@ -107,7 +107,7 @@ function crearBD($host,$nombreBD,$usuarioBD,$contraseniaUsuarioBD,$nombreUsuario
 	}
 
 	//Crear usuario
-	if ($stmt = $mysqli->prepare("INSERT INTO usuarios (usuario) VALUES (?);"))
+	if ($stmt = $mysqli->prepare("INSERT INTO usuarios (usuario,fechaNacimiento) VALUES (?,'1-1-1900 0:00:00');"))
 	{
 		$stmt->bind_param('s', $nombreUsuario);
 		$stmt->execute();

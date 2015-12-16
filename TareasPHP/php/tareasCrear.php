@@ -48,10 +48,13 @@
 				    	<?php
 					    while($usuario = $usuarios->fetch_object())
 					    { 
-					    	echo "<tr>";
-					    	echo "<td><input type='checkbox' name='idsUsuarios[]' value='".$usuario->id."'></td>\n";
-					        echo "<td>".$usuario->usuario."</td>";
-					        echo "</tr>";
+					    	if ((!esAdministrador($usuario->id))&&($usuario->id!=$_SESSION['idUsuario']))
+					    	{
+						    	echo "<tr>";
+						    	echo "	<td><input type='checkbox' name='idsUsuarios[]' value='".$usuario->id."'></td>\n";
+						        echo "	<td>".$usuario->usuario."</td>";
+						        echo "</tr>";
+					    	}
 					    } 
 				    
 						?>

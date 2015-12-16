@@ -34,5 +34,6 @@ while($tarea = $tareas->fetch_object())
 
 ?>
 </table>
+<a href="tareasCrear.php">Nueva Tarea</a>
 </body>
 </html>

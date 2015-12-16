@@ -30,14 +30,13 @@ function obtenerUsuarios()
 {
 	$connUsuarios=getDB();
 	
-	if($usuariosPosibles = $connUsuarios->query("select * from usuarios"))
+	if($usuariosPosibles = $connUsuarios->query("select * from usuarios where id !=0 and habilitado=1"))
 	{
 		return $usuariosPosibles;
 	} else {
 		return "error:".$connUsuarios->error;
 	}
 	$connUsuarios->close();
-	
 }
 
 
@@ -105,22 +104,21 @@ function modificarUsuario()
 	$usuarioApellido ='"'.$connection->real_escape_string($_POST["apellido"]).'"';
 	$usuarioFechaNacimiento ='"'.$_POST["anio"].'-'.$_POST["mes"]."-".$_POST["dia"].'"';
 	$usuarioCorreoElectronico ='"'.$connection->real_escape_string($_POST["eMail"]).'"';
-	$usuarioClave ='"'.$connection->real_escape_string($_POST["clave"]).'"';
+	//$usuarioClave ='"'.$connection->real_escape_string($_POST["clave"]).'"';
+	$habilitado=(isset($_POST['habilitado']))?'true':'false';
+	
+	$sqlUpdate='UPDATE  usuarios SET ';
+	$sqlUpdate .='nombre='.$usuarioNombre.',';
+	$sqlUpdate .='apellido='.$usuarioApellido.',';
+	$sqlUpdate .='fechaNacimiento='.$usuarioFechaNacimiento.',';
+	$sqlUpdate .='correoElectronico='.$usuarioCorreoElectronico.',';
+	$sqlUpdate .='foto='.$usuarioFoto.', ';
+	$sqlUpdate .='habilitado='.$habilitado;//,';
+	//$sqlUpdate .='claveAccesO='.$usuarioClave.'"';
+	$sqlUpdate .=' WHERE ID='.$_POST["id"];
+	//die($sqlUpdate);
 
-	$sqlInsert='UPDATE  usuarios SET ';
-	$sqlInsert .='nombre='.$usuarioNombre.',';
-	$sqlInsert .='apellido='.$usuarioApellido.',';
-	$sqlInsert .='fechaNacimiento='.$usuarioFechaNacimiento.',';
-	$sqlInsert .='correoElectronico='.$usuarioCorreoElectronico.',';
-	$sqlInsert .='foto='.$usuarioFoto;//,';
-	//$sqlInsert .='claveAccesO='.$usuarioClave.'"';
-	$sqlInsert .=' WHERE ID='.$_POST["id"];
-
-	//echo $sqlInsert;
-
-	//MySqli Insert Query
-
-	$insert_row = $connection->query($sqlInsert);
+	$insert_row = $connection->query($sqlUpdate);
 
 	if($insert_row){$resultado=true; }
 	else{die('Error : ('. $connection->errno .') '. $connection->error);$resultado=false;}
@@ -132,11 +130,11 @@ function modificarUsuario()
 	$connection->close;
 	return $resultado;
 }
-
+/*
 function eliminarUsuario($id)
 {
 	$connection = getDB();
-	$sqlContrasenia="delete from contrasenias where usuario_id='$id'";
+	$sqlContrasenia="update usuarios set habilitado=where id='$id'";
 	
 	if($result = $connection->query($sqlContrasenia))
 	{
@@ -150,5 +148,5 @@ function eliminarUsuario($id)
 	return 'Error : ('. $connection->errno .') '. $connection->error;
 	$connection->close;
 }
-
+*/
 ?>
