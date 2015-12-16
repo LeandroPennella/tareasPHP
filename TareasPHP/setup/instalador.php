@@ -37,6 +37,7 @@ function crearBD($host,$nombreBD,$usuarioBD,$contraseniaUsuarioBD,$nombreUsuario
 	ini_set('max_execution_time', 300);
 	
 	$rol="Administrador";
+	
 	//conectar a BD
 	$mysqli=new mysqli($host,$usuarioBD,$contraseniaUsuarioBD);
 	if ($mysqli->connect_errno) {printf("Falló la conexión: %s\n<br>", $mysqli->connect_error);exit();}
@@ -79,6 +80,19 @@ function crearBD($host,$nombreBD,$usuarioBD,$contraseniaUsuarioBD,$nombreUsuario
 
 	printf("Relaciones creadas exitosamente.\n<br>");
 
+	//Crear Usuario anonimo
+	if ($mysqli->multi_query($SQLInsertarUsuarioAnonimo))
+	{
+		do{} while($mysqli->more_results() && $mysqli->next_result());
+	}
+	else
+	{
+		print "<br>Error al crear tablas - <i>Error:</i> ".$mysqli->error()." <i>Código:</i> ".$mysqli->errno();
+		exit();
+	}
+	
+	printf("Usuario anonimo creado exitosamente.\n<br>");
+	
 	
 
 	

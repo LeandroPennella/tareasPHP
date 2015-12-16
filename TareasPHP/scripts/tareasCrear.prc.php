@@ -1,6 +1,6 @@
 <?php
-require_once 'sql.tareas.php';
-require_once '../scripts/sql.usuarios.php';
+require_once '../sql/sql.tareas.php';
+require_once '../sql/sql.usuarios.php';
 $usuarios = obtenerUsuarios();
 
 if (isset($_POST['submitTarea']))
@@ -31,6 +31,7 @@ function validarTarea()
 	{
 		return "Debe escribir el titulo de la tarea";
 	}
+	/*
 	if (!isset($_POST["publico"]))
 	{
 		if(!isset($_POST['idsUsuarios'])) //>validar
@@ -38,6 +39,7 @@ function validarTarea()
 			return "Debe seleccionar al menos un usuario";
 		}
 	}
+	*/
 	return 'ok';
 }
 

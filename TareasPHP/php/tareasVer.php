@@ -1,6 +1,6 @@
 <?php
 require_once "../config.php";
-require_once '../scripts/sql.tareas.php';
+require_once '../sql/sql.tareas.php';
 ?>
 <html>
 <head>

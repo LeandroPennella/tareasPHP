@@ -82,14 +82,13 @@ ALTER TABLE tareas_usuarios ADD FOREIGN KEY (tarea_id) REFERENCES tareas(id);
 ALTER TABLE tareas_usuarios ADD FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
 ";
 
-/*
-$SQLInsertarDatos="
 
-INSERT INTO roles (rol) VALUES ('Administrador');
-INSERT INTO usuarios (usuario) VALUES ('Leandro');
-INSERT INTO contrasenias (contrasenia,usuario_id) VALUES ('Leandro',1);
+$SQLInsertarUsuarioAnonimo="
+INSERT INTO usuarios (id, usuario) VALUES (-1,'anonimo');
+UPDATE usuarios SET id = 0 where id = -1;
+INSERT INTO contrasenias (clave,usuario_id) VALUES ('',0);
 ";
-*/
+
 
 
 ?>

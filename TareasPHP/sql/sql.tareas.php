@@ -2,6 +2,7 @@
 
 function tareaEditable($idTarea)
 {
+	//solo creada por el usuario logueado o si usuario es administrador
 	//TODO:
 }
 
@@ -38,7 +39,7 @@ function editarTarea($id)
 function listarTareas() //UsuarioActual
 {
 	//TODO: evaluar si es admin
-	$idUsuario=0;
+	$idUsuario=$_SESSION["idUsuario"];
 	$conn = getDB();
 	
 	$sqlInvitado='
@@ -50,7 +51,9 @@ function listarTareas() //UsuarioActual
 			WHERE t.usuarioCreador_id='.$idUsuario;
 	$sqlPublicas='
 			SELECT t.id ,tarea, fechaCreacion FROM tareas t
-			WHERE t.id not in (select tarea_id from tareas_usuarios)';
+			inner join tareas_usuarios tu on tu.tarea_id=t.id 
+			WHERE tu.usuario_id=0';
+			
 
 	$sql='('.$sqlInvitado.') UNION ('.$sqlPropietario.') UNION ('.$sqlPublicas.') ';
 	$sql.='ORDER BY fechaCreacion DESC';
@@ -100,7 +103,13 @@ function guardarTarea()
 
 	$idTarea=$conn->insert_id;
 
-	if (!isset($_POST["publico"]))//no es publico
+	if (isset($_POST["publico"]))//es publico
+	{
+		$sql='INSERT INTO tareas_usuarios (tarea_id,usuario_id) VALUES ('.$idTarea.',0)';
+		$insert_row = $conn->query($sql);
+		if($insert_row){$resultado=true;} else {die('Error : ('. $conn->errno .') '. $conn->error);}
+	}
+	else
 	{
 		$idsUsuarios=$_POST['idsUsuarios'];
 		$N = count($idsUsuarios);

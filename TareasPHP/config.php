@@ -6,6 +6,7 @@ define("SQL_DB","tareas");
 
 define("URL_LOGIN","login.php");
 define("DIR_LIBRERIAS","scripts/");
+define("DIR_SQL","sql/");
 define("DIR_FOTOPERFIL","../fotoPerfil/");
 
 define("NOMBRE_SITIO","tareas");
@@ -18,7 +19,7 @@ if(!isset($_SESSION)) {
 }
 	
 require_once DIR_LIBRERIAS."header.fnc.php";
-require_once DIR_LIBRERIAS."sql.php";
+require_once DIR_SQL."sql.php";
 require_once DIR_LIBRERIAS."Autenticacion.fnc.php";
 
 		

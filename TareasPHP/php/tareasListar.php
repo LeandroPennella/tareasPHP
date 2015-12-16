@@ -1,7 +1,8 @@
 <?php
+	
 	require_once "../config.php";
-	require_once '../scripts/sql.tareas.php';
-	$tareas=listarTareas();
+	require_once '../sql/sql.tareas.php';
+	
 	?>
 <html>
 
@@ -11,7 +12,10 @@
 	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/listado.css">
 </head>
 <body>
-<?php mostrarHeader("Listar Tareas");?> 
+<?php 
+mostrarHeader("Listar Tareas");
+$tareas=listarTareas();
+?> 
 <table id='box-table-a' >
 <thead>
 <tr><th>Ver</th><th>Tarea</th></tr>

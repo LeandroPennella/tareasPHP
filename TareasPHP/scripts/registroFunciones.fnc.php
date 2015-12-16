@@ -2,7 +2,7 @@
 
 require_once "../config.php";
 require_once "../scripts/registroProcesarImagen.fnc.php";
-require_once 'sql.usuarios.php';
+require_once '../sql/sql.usuarios.php';
 
 function imprimirPOST($variable)
 {

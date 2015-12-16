@@ -1,7 +1,7 @@
 <?php
 //require_once "registroProcesarImagen.fnc.php";
 require_once "registroFunciones.fnc.php";
-require_once "registroValidar.fnc.php";
+require_once "registroFuncionesValidar.fnc.php";
 
 
 
@@ -21,7 +21,6 @@ if (isset($_POST['enviarFormulario'])) // se completo el formulario
 		}
 	} else {
 		$mensajeError=$respuestaRegistro;
-		
 	}
 }
 ?>

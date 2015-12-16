@@ -4,6 +4,7 @@
 function mostrarHeader($tituloPagina)
 {
 	
+	
 comprobarAcceso();?>
 <!-- 
 <head>
