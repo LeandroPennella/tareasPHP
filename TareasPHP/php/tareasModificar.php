@@ -1,6 +1,6 @@
 <?php
 require_once "../config.php";
-require_once '../sql/sql.tareas.php';
+require_once '../script/tareasModificar.prc.php';
 ?>
 <html>
 <head>
@@ -12,6 +12,7 @@ require_once '../sql/sql.tareas.php';
 mostrarHeader("Ver Tarea");
 $tarea=verTarea($_GET['id']);
 ?>
+<form action="tareasModificar.php" method="post">
 <table id='box-table-a' >
 <thead>
 <tr>
@@ -19,11 +20,11 @@ $tarea=verTarea($_GET['id']);
 </tr>
 <tr>
 <td>Titulo</td>
-<td><?=$tarea->tarea?></td>
-
+<td><input type="text" name="tituloTarea" value="<?=$tarea->tarea?>"/></td>
 </tr>
 </thead>
 </table>
-<a href="tareasModificar.php?id=<?=$_GET['id']?>">Modificar</a>
+<p><input type="submit" name="submitModificarTarea" /></p>   
+</form>
 </body>
 </html>

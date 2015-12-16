@@ -21,6 +21,7 @@ CREATE TABLE usuarios
 	,`apellido` VARCHAR(250)  NULL
 	,`fechaNacimiento` DATE  NULL
 	,`correoElectronico` VARCHAR(250)  NULL 
+	,`habilitado` BOOLEAN NOT NULL DEFAULT TRUE 
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -52,7 +53,7 @@ CREATE TABLE tareas
 	,`lista_id` INT NOT NULL 
 	,`prioridad` INT  NULL 
 	,`usuarioCreador_id` INT NOT NULL 
-	,`fechaCreacion` DATETIME NOT NULL 
+	,`fechaCreacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
