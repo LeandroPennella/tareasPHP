@@ -20,12 +20,12 @@
 		<table>
 			<tr>
 				<td>
-					<label for="Tarea">Tarea</label>
-					<input type="text" name="tituloTarea" value="<?=imprimirPOST("tituloTarea")?>"/><br/>
-				</td>
-				<td>
-					<label for="Tarea">Descripcion</label>
-					<input type="text" name="descripcion" value="<?=imprimirPOST("descripcion")?>"/><br/>
+					<table id='box-table-a'>
+						<tr><th>Tarea</th></tr>
+						<tr><td><input type="text" name="titulo" value="<?=imprimirPOST("titulo")?>"/></td></tr>
+						<tr><th>Descripcion</th></tr>
+						<tr><td><textarea  rows=4 cols=40  name="descripcion"><?=imprimirPOST("descripcion")?></textarea></td></tr>
+					</table>
 				</td>
 				<td>
 					<!-- Tarea Publica -->

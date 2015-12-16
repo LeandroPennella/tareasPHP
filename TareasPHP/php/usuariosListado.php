@@ -45,7 +45,7 @@
 	        echo "<td>".$usuario->apellido."</td>";
 	        echo "<td>".$usuario->fechaNacimiento."</td>";
 	        echo "<td>".$usuario->correoElectronico."</td>";
-	        echo "<td>".$usuario->habilitado."</td>";
+	        echo "<td>".(($usuario->habilitado==1)?"si":"no")."</td>";
 	        echo "</tr>";
 	    } 
 	    echo "</tr></tbody></table>";

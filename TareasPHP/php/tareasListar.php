@@ -14,11 +14,19 @@
 <body>
 <?php 
 mostrarHeader("Listar Tareas");
-$tareas=listarTareas();
+if (esAdministrador())
+{$tareas=listarTareasAdmin();}
+else 
+{
+$tareas=listarTareas();}
 ?> 
 <table id='box-table-a' >
 <thead>
-<tr><th>Ver</th><th>Tarea</th></tr>
+<tr>
+	<th>Ver</th>
+	<th>Tarea</th>
+	<th>Cerrada</th>
+</tr>
 </thead>
 
 
@@ -28,7 +36,8 @@ while($tarea = $tareas->fetch_object())
 {
 	echo "<tr>";
 	echo "<td><a href='tareasVer.php?id=".$tarea->id."'>+</a></td>";
-	echo "<td>".$tarea->tarea."</td>";
+	echo "<td>".$tarea->titulo."</td>";
+	echo "<td>".(($tarea->cerrada==1)?"cerrada":"")."</td>";
 	echo "</tr>";
 }
 

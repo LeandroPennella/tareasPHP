@@ -11,6 +11,7 @@ comprobarAcceso();?>
 	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO?>/sitio.css">
 </head>
  -->
+
 <script type="text/javascript">
 function cambiarVisibilidad(){
 d= document.getElementById('menu').style ;
@@ -23,7 +24,7 @@ else
 <header>
 
 	
-	<a href="#" onclick="cambiarVisibilidad();">V</a>
+	<a href="#" onclick="cambiarVisibilidad();">v</a>
 	<div ><?php echo NOMBRE_SITIO .">". $tituloPagina?></div>
 	<div style=" float: right;">
 		<?php echo $_SESSION["usuario"];?>	
@@ -32,7 +33,7 @@ else
 		</a>
 	</div>
 </header>
-<ul style="position:fixed; top:20px; left:0px; display:none; background-color: lightGray;" id="menu">
+<ul  id="menu" class="menu" style="position:fixed; top:60px; left:0px; padding:0px; margin:0px; display:none; background-color: lightGray;">
 	<?php if (esAdministrador()){?>
 	<li><a href="usuarioslistado.php">Listado Usuarios</a></li>
 	<?php } ?>

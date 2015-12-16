@@ -49,7 +49,7 @@ CREATE TABLE tareas
 (
 	`id` INT NOT NULL AUTO_INCREMENT
 	,PRIMARY KEY (id)
-	,`tarea` VARCHAR(250) NOT NULL
+	,`titulo` VARCHAR(250) NOT NULL
 	,`descripcion` VARCHAR(1000) NULL 
 	,`lista_id` INT NOT NULL 
 	,`prioridad` INT  NULL 
@@ -72,6 +72,42 @@ CREATE TABLE tareas_usuarios (
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 		
+CREATE TABLE tareasNotas
+(
+	`id` INT NOT NULL AUTO_INCREMENT
+	,PRIMARY KEY (id)
+	,`tarea_id` INT NOT NULL 
+	,`nota` VARCHAR(250)  NULL 
+	,`usuario_id` INT NOT NULL 
+--	,`comentarioComentado_id` INT NOT NULL 
+	,`fechaCreacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP 
+)
+ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE tareasCerradas
+(
+	`id` INT NOT NULL AUTO_INCREMENT
+	,PRIMARY KEY (id)
+	,`tarea_id` INT NOT NULL 
+	,`nota_id` INT NOT NULL 
+	,`usuario_id` INT NOT NULL 
+	,`cerrada` BOOLEAN NOT NULL DEFAULT TRUE 
+--	,`comentarioComentado_id` INT NOT NULL 
+--	,`fechaHora` DATETIME  NOT NULL DEFAULT CURRENT_TIMESTAMP 
+)
+ENGINE=InnoDB DEFAULT CHARSET=latin1;
+		
+CREATE TABLE tareasNotasAdjuntos
+(
+	`id` INT NOT NULL AUTO_INCREMENT
+	,PRIMARY KEY (id)
+	,`nota_id` INT NOT NULL 
+	,`rutaArchivo` VARCHAR(250)  NULL 
+--	,`usuario_id` INT NOT NULL 
+--	,`comentarioComentado_id` INT NOT NULL 
+--	,`fechaCreacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP 
+)
+ENGINE=InnoDB DEFAULT CHARSET=latin1;	
 ";
 
 
@@ -82,6 +118,14 @@ ALTER TABLE contrasenias ADD FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
 ALTER TABLE tareas ADD FOREIGN KEY (usuarioCreador_id) REFERENCES usuarios(id);
 ALTER TABLE tareas_usuarios ADD FOREIGN KEY (tarea_id) REFERENCES tareas(id);
 ALTER TABLE tareas_usuarios ADD FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+ALTER TABLE tareasCerradas ADD FOREIGN KEY (tarea_id) REFERENCES tareas(id);
+ALTER TABLE tareasCerradas ADD FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+ALTER TABLE tareasCerradas ADD FOREIGN KEY (nota_id) REFERENCES tareasNotas(id);		
+
+ALTER TABLE tareasNotas ADD FOREIGN KEY (tarea_id) REFERENCES tareas(id);
+ALTER TABLE tareasNotas ADD FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+		
+ALTER TABLE tareasNotasAdjuntos ADD FOREIGN KEY (nota_id) REFERENCES tareasNotas(id);
 ";
 
 

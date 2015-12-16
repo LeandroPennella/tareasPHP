@@ -8,8 +8,12 @@ require_once '../sql/sql.tareas.php';
 	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/listado.css">
 </head>
 <body>
-<?php 
+<?php
+
+if (!tareaVisible($_GET['id'])){header('Location: tareasListar.php');}
+
 mostrarHeader("Ver Tarea");
+
 $tarea=obtenerTarea($_GET['id']);
 ?>
 <table id='box-table-a' >
@@ -18,7 +22,7 @@ $tarea=obtenerTarea($_GET['id']);
 </thead>
 <tr>
 	<th>Titulo</th>
-	<td><?=$tarea->tarea?></td>
+	<td><?=$tarea->titulo?></td>
 </tr>
 <tr>
 	<th>Descripcion</th>
@@ -37,8 +41,34 @@ $tarea=obtenerTarea($_GET['id']);
 	<?php }}?> 
 	</td>
 </tr>
+<tr>
+	<th>Contenidos</th>
+	<td>
+	<?php 
+	$notasTareas=obtenerTareaNotas($_GET['id']);
+	if ($notasTareas==null)
+	{?>&nbsp;<?php }	else {
+		while($nota = $notasTareas->fetch_object())
+		{?>
+		<b><?= $nota->usuario?>(<?= $nota->fechaCreacion?>): </b>
+		<?= $nota->nota?><br/>
+			
+		<?php 
+		}
+	}?> 
+	
+	</td>
+</tr>
 </table>
-<a href="tareasModificar.php?id=<?=$_GET['id']?>">Modificar</a>
-<a href="tareasCompletar.php?id=<?=$_GET['id']?>">Completar</a>
+
+	<?php 
+	if (tareaEditable($_GET["id"]))
+	{?>
+	<a href="tareasModificar.php?id=<?=$_GET['id']?>">Modificar</a>
+	<?php 
+	} ?>
+	<a href="tareasModificarCerrar.php?id=<?=$_GET['id']?>">Cerrar</a>
+	<a href="tareasModificarAgregarContenido.php?id=<?=$_GET['id']?>">Agregar Contenidos</a>
+	<a href="tareasListar.php">Listado</a>
 </body>
 </html>

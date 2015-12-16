@@ -1,19 +1,23 @@
 <?php
 require_once "../config.php";
-require_once '../script/tareasModificar.prc.php';
+require_once '../scripts/tareasModificar.prc.php';
 ?>
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/sitio.css">
 	<link type="text/css" rel="stylesheet" href="../estilos/<?php echo ESTILO_SITIO ?>/listado.css">
+	<!-- <style type="text/css">
+	.menu{position:fixed; top:60px; left:0px; padding:0px; margin:0px; display:none; background-color: lightGray;}
+	</style>
+	 -->
 </head>
 <body>
 <?php 
 mostrarHeader("Modificar Tarea");
-$tarea=obtenerTarea($_GET['id']);
+//$tarea=obtenerTarea($_GET['id']);
 ?>
 
-<form action="tareasModificar.php" method="post" e">
+<form action="tareasModificar.php" method="post" >
 <input type="hidden" name="id" value="<?php imprimirPOST("id");?>" />
 
 <table id='box-table-a' >
@@ -23,11 +27,11 @@ $tarea=obtenerTarea($_GET['id']);
 			
 <tr>
 	<th>Titulo</th>
-	<td><input type="text" name="tarea" value="<?php imprimirPOST["tarea"]?>"/></td>
+	<td><input type="text" name="titulo" value="<?php imprimirPOST("titulo");?>" /></td>
 </tr>
 <tr>
 	<th>Descripcion</th>
-	<td><input type="text" name="descripcion" value="<?php imprimirPOST["descripcion"]?>"/></td>
+	<td><input type="text" name="descripcion" value="<?php imprimirPOST("descripcion");?>"/></td>
 </tr>
 <tr>	
 	<th >Usuarios</th>
@@ -42,7 +46,11 @@ $tarea=obtenerTarea($_GET['id']);
 	<?php }}?> 
 	</td>
 </tr>
-<input type="submit" name="submitTareaModificada" value="Enviar"/>
+<tr>
+	<td colspan="2"><input type="submit" name="submitTareaModificada" value="Enviar"/></td>
+</tr>
+
+
 </table>
 </form>
 

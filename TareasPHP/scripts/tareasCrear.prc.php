@@ -27,7 +27,7 @@ if (isset($_POST['submitTarea']))
 function validarTarea()
 {
 
-	if (!(isset($_POST["tituloTarea"])&&$_POST["tituloTarea"]!=""))
+	if (!(isset($_POST["titulo"])&&$_POST["titulo"]!=""))
 	{
 		return "Debe escribir el titulo de la tarea";
 	}

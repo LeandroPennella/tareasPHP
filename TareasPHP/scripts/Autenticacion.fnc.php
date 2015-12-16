@@ -6,10 +6,7 @@ function logOut($redireccion)
 }
 
 
-function estaLogueado()
-{
-	return $_SESSION["login"]=="true";
-};
+
 
 
 function comprobarAcceso()
@@ -27,9 +24,16 @@ function comprobarAccesoAdministrador()
 		header('Location: http://'.RAIZ_URL.'/php/usuariosLogin.php');
 	}
 }
+
+function estaLogueado()
+{
+	return (isset($_SESSION["login"])&&$_SESSION["login"]=="true");
+}
+
 function esAdministrador($id=null)
 {
-
+	if (estaLogueado())
+	{
 	$idUsuario=($id==null)?$_SESSION["idUsuario"]:$id;
 	$sql="SELECT distinct 1 FROM usuarios  u
 	inner join rol_usuario ru on u.id=ru.usuario_id
@@ -44,5 +48,6 @@ function esAdministrador($id=null)
 	return false;}
 	$mysqli->close();
 	unset($sql);
+	}
 }
 ?>
