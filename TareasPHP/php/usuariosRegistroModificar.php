@@ -110,23 +110,15 @@ require_once '../scripts/registroModificar.inc.php';
 			<label>eMail</label>
 			<input type="text" name="eMail" value="<?php imprimirPOST("eMail");?>"/>
 			<br/>	
-			
-<!-- 			 
 			<?php 
-// 			if (!isset($_SESSION["registro"]["modo"])) { /*si es modificacion no se muestra la clave */ ?>
-
-			<label>clave</label>
-			<input type="password" name="clave"/>
-			<br/>
-
-			<label>repetir clave</label>
-			<input type="password" name="repetirClave" />
-			<br/>
- 			
-			<?php 
-//			} ?>
--->				
+			if ($_POST['id']!=1){	//no se elimina al admin
+			?>
+			<a href="../scripts/RegistroEliminar.prc.php?id=<?=$_POST['id']?>">Eliminar</a>
+			<?php
+			}
+			?>
 			<input type="submit" name="enviarFormulario" value="Enviar"/>
+			
 			</div>
 		</form>
 	</div>

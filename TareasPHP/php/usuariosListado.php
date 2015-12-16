@@ -1,4 +1,7 @@
-<?php require_once "../config.php"; ?>
+<?php require_once "../config.php";
+if (!esAdministrador())
+{header('Location: ../index.php');}
+?>
 
 <html>
 <head>

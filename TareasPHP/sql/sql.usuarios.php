@@ -132,4 +132,23 @@ function modificarUsuario()
 	$connection->close;
 	return $resultado;
 }
+
+function eliminarUsuario($id)
+{
+	$connection = getDB();
+	$sqlContrasenia="delete from contrasenias where usuario_id='$id'";
+	
+	if($result = $connection->query($sqlContrasenia))
+	{
+		$sqlUsuario="delete from usuarios where id='$id'";
+		if($result = $connection->query($sqlUsuario))
+		{return "ok";}
+		//else{die('Error : ('. $connection->errno .') '. $connection->error);$resultado=false;}
+			
+	} 
+	//else{die('Error : ('. $connection->errno .') '. $connection->error);$resultado=false;}
+	return 'Error : ('. $connection->errno .') '. $connection->error;
+	$connection->close;
+}
+
 ?>

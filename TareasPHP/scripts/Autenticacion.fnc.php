@@ -20,13 +20,14 @@ function comprobarAcceso()
 	}
 }
 
-function esAdministrador()
+function esAdministrador($id=null)
 {
-	$usuario=$_SESSION["usuario"];
+
+	$idUsuario=($id==null)?$_SESSION["idUsuario"]:$id;
 	$sql="SELECT distinct 1 FROM usuarios  u
 	inner join rol_usuario ru on u.id=ru.usuario_id
 	inner join roles r on r.id=ru.rol_id
-	where r.rol='Administrador'";
+	where (u.id=$idUsuario) and r.rol='Administrador'";
 
 	$mysqli = new mysqli(SQL_HOST,SQL_US,SQL_PW,SQL_DB);
 	if (mysqli_connect_error()) {die('Error de Conexión (' . mysqli_connect_errno() . ') '. mysqli_connect_error());}
