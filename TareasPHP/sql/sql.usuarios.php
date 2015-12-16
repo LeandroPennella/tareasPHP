@@ -39,7 +39,6 @@ function obtenerUsuarios()
 	$connUsuarios->close();
 }
 
-
 function guardarUsuario()
 {
 	$connection = getDB();

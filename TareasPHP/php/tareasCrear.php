@@ -24,6 +24,10 @@
 					<input type="text" name="tituloTarea" value="<?=imprimirPOST("tituloTarea")?>"/><br/>
 				</td>
 				<td>
+					<label for="Tarea">Descripcion</label>
+					<input type="text" name="descripcion" value="<?=imprimirPOST("descripcion")?>"/><br/>
+				</td>
+				<td>
 					<!-- Tarea Publica -->
 					<table id='box-table-a' summary='publico'>
 						<thead>

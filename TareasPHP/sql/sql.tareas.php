@@ -27,7 +27,6 @@ function obtenerTarea($idTarea)
 	unset($sql);
 }
 
-
 function obtenerTareaUsuarios($idTarea)
 {
 	$conn = getDB();
@@ -50,7 +49,6 @@ function editarTarea($id)
 		//TODO:	
 	}
 }
-
 
 function listarTareas() //UsuarioActual
 {
@@ -109,9 +107,13 @@ function guardarTarea()
 	
 	$resultado=false;
 	
-	$conn = getDB();
 	
-	$sql='INSERT INTO tareas (tarea,usuarioCreador_id) VALUES ("'.$_POST["tituloTarea"].'",'.$_SESSION["idUsuario"].')';
+	$conn = getDB();
+	$tituloTarea=$conn->real_escape_string($_POST["tituloTarea"]);
+	$descripcion=$conn->real_escape_string($_POST["descripcion"]);
+	
+	$sql="INSERT INTO tareas (tarea,descripcion,usuarioCreador_id) 
+			VALUES ('$tituloTarea','$descripcion',".$_SESSION["idUsuario"].")";
 	
 	$insert_row = $conn->query($sql);
 	if($insert_row){$resultado=true;} else {die('Error : ('. $conn->errno .') '. $conn->error);}
@@ -147,5 +149,27 @@ function guardarTarea()
 	return $resultado;
 	$conn->close();
 	unset($sql);
+}
+
+function modificarTarea()
+{
+
+	$resultado=false;
+
+	$conn = getDB();
+	$tituloTarea=$conn->real_escape_string($_POST["tituloTarea"]);
+	$descripcion=$conn->real_escape_string($_POST["descripcion"]);
+	$sqlUpdate="
+			UPDATE tareas set 
+			tarea='$tituloTarea',
+			descripcion='$descripcion'
+			WERE id=".$_POST["id"];
+			
+	$update = $conn->query($sqlUpdate);
+	if($update){$resultado=true;} else {die('Error : ('. $conn->errno .') '. $conn->error);}
+
+	return $resultado;
+	$conn->close();
+	unset($sqlUpdate);
 }
 ?>

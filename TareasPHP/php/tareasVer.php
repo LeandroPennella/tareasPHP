@@ -20,6 +20,10 @@ $tarea=obtenerTarea($_GET['id']);
 	<th>Titulo</th>
 	<td><?=$tarea->tarea?></td>
 </tr>
+<tr>
+	<th>Descripcion</th>
+	<td><?=$tarea->descripcion?></td>
+</tr>
 <tr>	
 	<th >Usuarios</th>
 	<td>
