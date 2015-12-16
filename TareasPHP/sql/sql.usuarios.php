@@ -148,4 +148,23 @@ function eliminarUsuario($id)
 	$connection->close;
 }
 */
+
+function registroExistente()
+{
+	
+	$conn = getDB();
+	$usuario=$conn->real_escape_string($_POST["usuario"]);
+	$correoElectronico=$conn->real_escape_string($_POST["eMail"]);
+	$sqlSelect="
+			select * 
+			from usuarios 
+			where usuario='$usuario'
+			or correoElectronico='$correoElectronico'";
+	
+	if($result=$conn->query($sqlSelect)) {
+		return $result->num_rows>0;
+	} else {return "error:".$conn->error;}
+	$conn->close;
+}
+
 ?>

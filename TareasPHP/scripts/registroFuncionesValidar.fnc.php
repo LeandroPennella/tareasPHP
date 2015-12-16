@@ -1,6 +1,6 @@
 <?php
 
-
+require_once '../sql/sql.usuarios.php';
 //validar;
 function validarRegistro()
 {
@@ -31,6 +31,8 @@ function validarRegistro()
 		if (!$claveCargada){return "Introducir una clave";}
 		if (!$clavesIguales){return "las claves no concuerdan";}
 	}
+	
+	if(registroExistente()){return "el usuario ya existe";}
 	//else 		
 	return "ok";
 	

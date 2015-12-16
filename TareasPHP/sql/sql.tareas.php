@@ -4,6 +4,9 @@ function tareaVisible($idTarea)
 {
 	//solo creada por el usuario logueado o si usuario es administrador
 	//TODO:
+	if(esAdministrador())
+	{return true;}
+	else {
 	$idUsuarioActual=$_SESSION["idUsuario"];
 	$conn = getDB();
 	$sql="
@@ -32,6 +35,7 @@ function tareaVisible($idTarea)
 	}
 	$conn->close();
 	unset($sql);
+	}
 }
 
 function tareaEditable($idTarea)
@@ -137,10 +141,9 @@ function listarTareasAdmin()
 	$conn = getDB();
 
 	$sql='
-			SELECT *, c.cerrada
+			SELECT t.id ,titulo,  fechaCreacion, c.cerrada
 			FROM tareas t
 			LEFT JOIN tareascerradas c on c.tarea_id=t.id
-			
 			ORDER BY fechaCreacion DESC';
 			
 			
@@ -201,7 +204,7 @@ function guardarTarea()
 	}
 	
 
-	return $resultado;
+	if( $resultado==true){return $conn->insert_id;};
 	$conn->close();
 	unset($sql);
 }

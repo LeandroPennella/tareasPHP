@@ -64,11 +64,11 @@ $tarea=obtenerTarea($_GET['id']);
 	<?php 
 	if (tareaEditable($_GET["id"]))
 	{?>
-	<a href="tareasModificar.php?id=<?=$_GET['id']?>">Modificar</a>
+	<a href="tareasModificar.php?id=<?=$_GET['id']?>">Modificar</a><br>
 	<?php 
 	} ?>
-	<a href="tareasModificarCerrar.php?id=<?=$_GET['id']?>">Cerrar</a>
-	<a href="tareasModificarAgregarContenido.php?id=<?=$_GET['id']?>">Agregar Contenidos</a>
+	<a href="tareasModificarCerrar.php?id=<?=$_GET['id']?>">Cerrar Tarea</a><br>
+	<a href="tareasModificarAgregarContenido.php?id=<?=$_GET['id']?>">Agregar Contenidos</a><br>
 	<a href="tareasListar.php">Listado</a>
 </body>
 </html>

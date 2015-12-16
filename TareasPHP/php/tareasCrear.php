@@ -68,5 +68,6 @@
 		</table>
   		<p><input type="submit" name="submitTarea" /></p>   
 	</form>
+	<a href="tareasListar.php">Cancelar</a>
 	</body>
 </html>

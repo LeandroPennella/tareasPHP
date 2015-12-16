@@ -18,8 +18,8 @@ if (isset($_POST['submitTarea']))
 	} 
 	else
 	{
-		guardarTarea();
-	  	header("Location: ../php/tareasListar.php");
+		$idTarea=guardarTarea();
+	  	header("Location: ../php/tareasVer.php?id=".$idTarea);
 		die();
 	}
 }
